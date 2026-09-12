@@ -12,7 +12,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,7 +29,7 @@
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    
+
     <nav class="navbar">
       <a href="#top">Home</a>
       <a href="#solutions">Solutions</a>
@@ -55,8 +55,8 @@
     <div class="container hero-grid">
 
       <div class="hero-copy">
-        <p class="hero-kicker">Serving homes &amp; businesses across Bengaluru</p>
-        <h1>Water your home can actually trust</h1>
+        <p class="hero-kicker">Water treatment, tested before it's sold</p>
+        <h1>Water your home can actually <em>trust</em></h1>
         <p class="hero-lede">Most Bengaluru borewells run hard. SV Marketing fits ZeroB softeners and purifiers sized to your actual water, not a generic package.</p>
         <p class="hero-body">We test your source, walk you through what a softener does versus a purifier, and install a system built for your household size and usage — apartments, independent homes, offices and institutions alike.</p>
 
@@ -67,32 +67,82 @@
       </div>
 
       <div class="hero-visual">
-        <img src="hero-water-softener.jpg" alt="Clean water flowing from a kitchen tap" class="hero-photo" data-ratio="4/3" onerror="handleImageError(this)">
+        <div class="ticket">
+          <div class="ticket-head">
+            <span class="ticket-label">SAMPLE READING</span>
+            <span class="ticket-id">BLR / BOREWELL</span>
+          </div>
 
-        <div class="gauge-card">
+          <div class="ticket-reading">
+            <span class="value">312</span><span class="unit">ppm CaCO₃</span>
+            <p class="desc">A typical hardness reading from an untreated Bengaluru borewell.</p>
+          </div>
+
           <svg class="gauge" viewBox="0 0 300 175" role="img" aria-label="Water hardness gauge showing a hard reading">
             <defs>
               <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="var(--water-light)"/>
-                <stop offset="55%" stop-color="var(--water)"/>
-                <stop offset="100%" stop-color="var(--copper)"/>
+                <stop offset="0%" stop-color="var(--slate-light)"/>
+                <stop offset="55%" stop-color="var(--slate)"/>
+                <stop offset="100%" stop-color="var(--oxide)"/>
               </linearGradient>
             </defs>
-            <path d="M20,150 A130,130 0 0 1 280,150" fill="none" stroke="var(--line-strong)" stroke-width="20" stroke-linecap="round"/>
-            <path class="gauge-fill" d="M20,150 A130,130 0 0 1 280,150" fill="none" stroke="url(#gaugeGradient)" stroke-width="20" stroke-linecap="round"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(-70 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(-35 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(0 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(35 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(70 150 150)"/>
+            <path d="M20,150 A130,130 0 0 1 280,150" fill="none" stroke="var(--line-strong)" stroke-width="18" stroke-linecap="round"/>
+            <path class="gauge-fill" d="M20,150 A130,130 0 0 1 280,150" fill="none" stroke="url(#gaugeGradient)" stroke-width="18" stroke-linecap="round"/>
+            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="2" transform="rotate(-70 150 150)"/>
+            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="2" transform="rotate(-35 150 150)"/>
+            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="2" transform="rotate(0 150 150)"/>
+            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="2" transform="rotate(35 150 150)"/>
+            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="2" transform="rotate(70 150 150)"/>
             <g class="gauge-needle">
-              <line x1="150" y1="150" x2="205" y2="58" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
-              <circle cx="150" cy="150" r="10" fill="var(--copper)"/>
+              <line x1="150" y1="150" x2="205" y2="58" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="150" cy="150" r="8" fill="var(--oxide)"/>
             </g>
-            <text x="30" y="172" class="gauge-label">Soft</text>
-            <text x="238" y="172" class="gauge-label">Hard</text>
+            <text x="30" y="172" class="gauge-label">SOFT</text>
+            <text x="234" y="172" class="gauge-label">HARD</text>
           </svg>
-          <p class="gauge-readout"><strong>312 ppm</strong> — a typical Bengaluru borewell reading</p>
+
+          <div class="ticket-rows">
+            <div class="ticket-row"><span>Recommended fix</span><span>ZeroB Softener</span></div>
+            <div class="ticket-row"><span>Est. install time</span><span>Same day</span></div>
+          </div>
+        </div>
+        <div class="ticket-jag" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= WATER JOURNEY ================= -->
+  <section class="journey section">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="kicker">HOW WE TREAT IT</p>
+        <h2>Your water's journey, in four stops</h2>
+        <p>Every recommendation follows this same path — we just decide which stops your water actually needs.</p>
+      </div>
+
+      <div class="journey-track">
+        <div class="journey-step">
+          <span class="step-index mono">01</span>
+          <h3>Source</h3>
+          <p>Borewell or municipal supply — we test it before recommending anything.</p>
+        </div>
+        <div class="journey-step">
+          <span class="step-index mono">02</span>
+          <h3>Softening</h3>
+          <p>Calcium and magnesium removed by ion exchange, if hardness calls for it.</p>
+        </div>
+        <div class="journey-step">
+          <span class="step-index mono">03</span>
+          <h3>Purification</h3>
+          <p>TDS and drinking-water quality addressed separately, at the kitchen point.</p>
+        </div>
+        <div class="journey-step">
+          <span class="step-index mono">04</span>
+          <h3>Your tap</h3>
+          <p>Water sized to your household — not over-treated, not under-treated.</p>
         </div>
       </div>
 
@@ -105,15 +155,21 @@
     <div class="container">
 
       <div class="section-heading">
+        <p class="kicker">TWO SYSTEMS</p>
         <h2>Two problems, two different fixes</h2>
         <p>Softening and purification solve different things. We help you work out which one your water actually needs — often both.</p>
       </div>
 
       <div class="solution-row">
         <div class="solution-visual">
-          <img src="water-softener-unit.jpg" alt="ZeroB water softener unit installed at a home" data-ratio="4/3" onerror="handleImageError(this)">
+          <p class="spec-title mono">SOFTENER — SPEC SUMMARY</p>
+          <div class="spec-row"><span>Targets</span><span>Ca² / Mg² hardness</span></div>
+          <div class="spec-row"><span>Method</span><span>Ion exchange</span></div>
+          <div class="spec-row"><span>Best for</span><span>Borewell homes</span></div>
+          <div class="spec-row"><span>Protects</span><span>Geysers, RO, pipes</span></div>
         </div>
         <div class="solution-copy">
+          <p class="index-tag mono">01 / SOFTENER</p>
           <h3>Water Softener</h3>
           <p class="solution-sub">For hardness, scale, and everything it slowly damages</p>
           <p>A softener removes the calcium and magnesium that cause scale on taps, film in shower fittings, and a heavier load on your water heater and appliances.</p>
@@ -128,9 +184,14 @@
 
       <div class="solution-row solution-row-reverse">
         <div class="solution-visual">
-          <img src="water-purifier-unit.jpg" alt="ZeroB water purifier unit mounted in a kitchen" data-ratio="4/3" onerror="handleImageError(this)">
+          <p class="spec-title mono">PURIFIER — SPEC SUMMARY</p>
+          <div class="spec-row"><span>Targets</span><span>TDS, drinking quality</span></div>
+          <div class="spec-row"><span>Method</span><span>Matched to source TDS</span></div>
+          <div class="spec-row"><span>Best for</span><span>Kitchen, drinking point</span></div>
+          <div class="spec-row"><span>Suits</span><span>Homes, offices, kitchens</span></div>
         </div>
         <div class="solution-copy">
+          <p class="index-tag mono">02 / PURIFIER</p>
           <h3>Water Purifier</h3>
           <p class="solution-sub">For drinking water you don't have to think twice about</p>
           <p>Purification is chosen against your source and TDS reading — not every kitchen needs the same setup, and over-purifying wastes as much water as under-purifying wastes your health.</p>
@@ -152,6 +213,7 @@
     <div class="container">
 
       <div class="section-heading">
+        <p class="kicker">WHAT TO LOOK FOR</p>
         <h2>Signs your water is working against you</h2>
         <p>Hard water rarely announces itself — it shows up as small, recurring annoyances first.</p>
       </div>
@@ -159,33 +221,45 @@
       <ul class="problem-list">
         <li class="problem-item">
           <svg viewBox="0 0 40 40" class="problem-icon" aria-hidden="true"><path d="M20 6c6 8 11 14 11 20a11 11 0 1 1-22 0c0-6 5-12 11-20z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 26c0 3 2.5 5.5 5.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <h3>Scale on taps &amp; fittings</h3>
-          <p>Chalky white deposits build up around taps and shower heads.</p>
+          <div>
+            <h3>Scale on taps &amp; fittings</h3>
+            <p>Chalky white deposits build up around taps and shower heads.</p>
+          </div>
         </li>
         <li class="problem-item">
           <svg viewBox="0 0 40 40" class="problem-icon" aria-hidden="true"><rect x="8" y="6" width="24" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 15h12M14 21h12M14 27h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <h3>Mineral buildup on surfaces</h3>
-          <p>Glassware, tiles and steel fixtures dull faster than they should.</p>
+          <div>
+            <h3>Mineral buildup on surfaces</h3>
+            <p>Glassware, tiles and steel fixtures dull faster than they should.</p>
+          </div>
         </li>
         <li class="problem-item">
           <svg viewBox="0 0 40 40" class="problem-icon" aria-hidden="true"><circle cx="14" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="18" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="28" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-          <h3>Soap won't lather</h3>
-          <p>Hardness minerals bind with soap before it can do its job.</p>
+          <div>
+            <h3>Soap won't lather</h3>
+            <p>Hardness minerals bind with soap before it can do its job.</p>
+          </div>
         </li>
         <li class="problem-item">
           <svg viewBox="0 0 40 40" class="problem-icon" aria-hidden="true"><path d="M10 30V16a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 30h28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <h3>More detergent, same result</h3>
-          <p>You use more product to get the same clean — and pay for it.</p>
+          <div>
+            <h3>More detergent, same result</h3>
+            <p>You use more product to get the same clean — and pay for it.</p>
+          </div>
         </li>
         <li class="problem-item">
           <svg viewBox="0 0 40 40" class="problem-icon" aria-hidden="true"><path d="M14 8h12v10a6 6 0 0 1-12 0V8z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17 32h6M20 26v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <h3>Water heaters scaling up</h3>
-          <p>Sediment builds inside geysers, cutting efficiency over time.</p>
+          <div>
+            <h3>Water heaters scaling up</h3>
+            <p>Sediment builds inside geysers, cutting efficiency over time.</p>
+          </div>
         </li>
         <li class="problem-item">
           <svg viewBox="0 0 40 40" class="problem-icon" aria-hidden="true"><path d="M8 20h10v12H8zM22 12h10v20H22z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 20v-4M27 12v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <h3>Plumbing wears out early</h3>
-          <p>Pipes and appliance valves take on damage they weren't built for.</p>
+          <div>
+            <h3>Plumbing wears out early</h3>
+            <p>Pipes and appliance valves take on damage they weren't built for.</p>
+          </div>
         </li>
       </ul>
 
@@ -202,12 +276,23 @@
     <div class="container why-us-grid">
 
       <div class="why-us-visual">
-        <img src="installation-team.jpg" alt="SV Marketing technician installing a water treatment system" data-ratio="4/3" onerror="handleImageError(this)">
+        <span class="ticket-label mono">TRACK RECORD</span>
+        <div class="why-us-stat">
+          <span class="num">100%</span>
+          <p class="label">of systems sized against a real test, not a guess.</p>
+        </div>
+        <div class="why-us-stat">
+          <span class="num">4</span>
+          <p class="label">property types served — homes, apartments, offices, institutions.</p>
+        </div>
       </div>
 
       <div class="why-us-copy">
-        <h2>Why people in Bengaluru call SV Marketing</h2>
-        <p class="section-lede">We're not trying to sell you the biggest system. We're trying to sell you the right one.</p>
+        <div class="section-heading">
+          <p class="kicker">WHY US</p>
+          <h2>Why people in Bengaluru call SV Marketing</h2>
+          <p>We're not trying to sell you the biggest system. We're trying to sell you the right one.</p>
+        </div>
 
         <ul class="checklist">
           <li><span class="check">✓</span> ZeroB systems, sized to your water source and household</li>
@@ -226,10 +311,11 @@
   <!-- ================= LOCATION ================= -->
   <section class="location section">
     <div class="container location-grid">
-      <div class="location-visual">
-        <img src="service-location-map.jpg" alt="SV Marketing service location near NICE Road, Bengaluru" data-ratio="16/9" onerror="handleImageError(this)">
+      <div class="location-visual mono">
+        MAP — Toll Junction, NICE Road,<br>Magadi Main Road, Kachohalli
       </div>
       <div class="location-copy">
+        <p class="index-tag">SERVICE AREA</p>
         <h2>Based on Magadi Main Road, serving all of Bengaluru</h2>
         <p>We're located near NICE Road, Kachohalli, and serve customers across Bengaluru and the surrounding areas, subject to service availability.</p>
         <a href="#contact" class="btn btn-secondary">Check if we cover your area</a>
@@ -238,213 +324,212 @@
   </section>
 
 
-<section class="faq section" id="faq">
-  <div class="container">
+  <section class="faq section" id="faq">
+    <div class="container">
 
-    <div class="section-heading">
-      <h2>Questions we hear a lot</h2>
-      <p>Clear answers to common questions about water softeners and water treatment.</p>
-    </div>
+      <div class="section-heading">
+        <p class="kicker">FAQ</p>
+        <h2>Questions we hear a lot</h2>
+        <p>Clear answers to common questions about water softeners and water treatment.</p>
+      </div>
 
-    <div class="faq-list">
+      <div class="faq-list">
 
-      <!-- FAQ 1 -->
-      <details class="faq-item">
-        <summary>What is a water softener?</summary>
-        <p>
-          A water softener is a water-treatment system designed primarily to reduce
-          hardness-causing minerals such as calcium and magnesium.
-        </p>
-      </details>
-
-      <!-- FAQ 2 -->
-      <details class="faq-item">
-        <summary>Is a water softener the same as an RO purifier?</summary>
-        <p>
-          No. They perform different functions. A water softener primarily addresses
-          water hardness, while an RO purifier is designed for specific drinking-water
-          purification requirements.
-        </p>
-      </details>
-
-      <!-- FAQ 3 -->
-      <details class="faq-item">
-        <summary>Which water softener is suitable for my home?</summary>
-        <p>
-          The appropriate system depends on water hardness, source, daily consumption,
-          number of users and application. We work this out with you before recommending
-          anything.
-        </p>
-      </details>
-
-      <!-- FAQ 4 -->
-      <details class="faq-item">
-        <summary>Do you provide water softener solutions in Bangalore?</summary>
-        <p>
-          Yes. SV Marketing provides ZeroB water softener solutions for residential
-          and commercial requirements in Bangalore.
-        </p>
-      </details>
-
-
-      <!-- =========================================
-           ADDITIONAL FAQs — HIDDEN INITIALLY
-           ========================================= -->
-
-      <div class="faq-extra" hidden>
-
+        <!-- FAQ 1 -->
         <details class="faq-item">
-          <summary>How does a water softener work?</summary>
+          <summary>What is a water softener?</summary>
           <p>
-            A water softener typically uses an ion-exchange process to reduce calcium
-            and magnesium ions responsible for water hardness. The softened water
-            helps reduce scale formation in plumbing, appliances and fixtures.
+            A water softener is a water-treatment system designed primarily to reduce
+            hardness-causing minerals such as calcium and magnesium.
           </p>
         </details>
 
+        <!-- FAQ 2 -->
         <details class="faq-item">
-          <summary>What are the signs of hard water?</summary>
+          <summary>Is a water softener the same as an RO purifier?</summary>
           <p>
-            Common signs include white scale on taps and shower fittings, soap that
-            does not lather easily, dry-feeling skin, dull-looking clothes and scale
-            buildup inside water-using appliances.
+            No. They perform different functions. A water softener primarily addresses
+            water hardness, while an RO purifier is designed for specific drinking-water
+            purification requirements.
           </p>
         </details>
 
+        <!-- FAQ 3 -->
         <details class="faq-item">
-          <summary>Why should I install a water softener at home?</summary>
+          <summary>Which water softener is suitable for my home?</summary>
           <p>
-            A water softener can help reduce the effects of hard water throughout
-            your home, including scale buildup on plumbing fixtures, bathrooms,
-            geysers and other water-using appliances.
+            The appropriate system depends on water hardness, source, daily consumption,
+            number of users and application. We work this out with you before recommending
+            anything.
           </p>
         </details>
 
+        <!-- FAQ 4 -->
         <details class="faq-item">
-          <summary>Can a water softener be used for the entire house?</summary>
+          <summary>Do you provide water softener solutions in Bangalore?</summary>
           <p>
-            Yes. Whole-house water softeners are designed to treat water entering
-            the home so that multiple outlets can receive softened water.
+            Yes. SV Marketing provides ZeroB water softener solutions for residential
+            and commercial requirements in Bangalore.
           </p>
         </details>
 
-        <details class="faq-item">
-          <summary>Will a water softener remove TDS from water?</summary>
-          <p>
-            No. A conventional water softener is primarily designed to address
-            hardness caused by calcium and magnesium. It is not a substitute for
-            an RO purifier or other treatment designed to reduce dissolved solids.
-          </p>
-        </details>
 
-        <details class="faq-item">
-          <summary>Does a water softener improve drinking water?</summary>
-          <p>
-            A water softener and a drinking-water purifier serve different purposes.
-            Whether softened water is suitable for drinking depends on the system,
-            water chemistry and the treatment setup. Drinking-water purification
-            should be selected based on the quality of the source water.
-          </p>
-        </details>
+        <!-- =========================================
+             ADDITIONAL FAQs — HIDDEN INITIALLY
+             ========================================= -->
 
-        <details class="faq-item">
-          <summary>How do I know if my water is hard?</summary>
-          <p>
-            Water hardness can be measured through a water-quality or hardness test.
-            Visible scale buildup and soap-related issues can indicate hardness,
-            but testing gives a more reliable basis for selecting a treatment system.
-          </p>
-        </details>
+        <div class="faq-extra" hidden>
 
-        <details class="faq-item">
-          <summary>How often does a water softener need maintenance?</summary>
-          <p>
-            Maintenance depends on the type of system, water quality, household
-            usage and operating conditions. Regular servicing and checking the
-            system according to the manufacturer's recommendations helps maintain
-            performance.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>How does a water softener work?</summary>
+            <p>
+              A water softener typically uses an ion-exchange process to reduce calcium
+              and magnesium ions responsible for water hardness. The softened water
+              helps reduce scale formation in plumbing, appliances and fixtures.
+            </p>
+          </details>
 
-        <details class="faq-item">
-          <summary>Does a water softener require salt?</summary>
-          <p>
-            Many conventional ion-exchange water softeners use salt during the
-            regeneration process. The exact requirement depends on the type and
-            model of water softener installed.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>What are the signs of hard water?</summary>
+            <p>
+              Common signs include white scale on taps and shower fittings, soap that
+              does not lather easily, dry-feeling skin, dull-looking clothes and scale
+              buildup inside water-using appliances.
+            </p>
+          </details>
 
-        <details class="faq-item">
-          <summary>How much does a water softener cost?</summary>
-          <p>
-            The cost depends on the water hardness, household size, water
-            consumption, system capacity, installation requirements and the type
-            of softener selected. We recommend evaluating the requirement before
-            choosing a system.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>Why should I install a water softener at home?</summary>
+            <p>
+              A water softener can help reduce the effects of hard water throughout
+              your home, including scale buildup on plumbing fixtures, bathrooms,
+              geysers and other water-using appliances.
+            </p>
+          </details>
 
-        <details class="faq-item">
-          <summary>Can water softeners be installed in apartments?</summary>
-          <p>
-            Yes. Water softening solutions can be considered for apartments,
-            villas and other residential properties. The appropriate setup depends
-            on available installation space, plumbing configuration and the
-            requirement of the property.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>Can a water softener be used for the entire house?</summary>
+            <p>
+              Yes. Whole-house water softeners are designed to treat water entering
+              the home so that multiple outlets can receive softened water.
+            </p>
+          </details>
 
-        <details class="faq-item">
-          <summary>Can you install water softeners for commercial properties?</summary>
-          <p>
-            Yes. Water treatment requirements can be evaluated for offices,
-            commercial buildings, hotels, institutions and other properties.
-            System selection depends on water usage and application.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>Will a water softener remove TDS from water?</summary>
+            <p>
+              No. A conventional water softener is primarily designed to address
+              hardness caused by calcium and magnesium. It is not a substitute for
+              an RO purifier or other treatment designed to reduce dissolved solids.
+            </p>
+          </details>
 
-        <details class="faq-item">
-          <summary>Do you provide installation in Bangalore?</summary>
-          <p>
-            Yes. SV Marketing provides water softener solutions and installation
-            support for residential and commercial requirements in Bangalore,
-            subject to site and system requirements.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>Does a water softener improve drinking water?</summary>
+            <p>
+              A water softener and a drinking-water purifier serve different purposes.
+              Whether softened water is suitable for drinking depends on the system,
+              water chemistry and the treatment setup. Drinking-water purification
+              should be selected based on the quality of the source water.
+            </p>
+          </details>
 
-        <details class="faq-item">
-          <summary>Can I get a water quality assessment before buying?</summary>
-          <p>
-            Yes. Assessing the source water and understanding the hardness and
-            intended usage can help determine the appropriate water-treatment
-            solution before installation.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>How do I know if my water is hard?</summary>
+            <p>
+              Water hardness can be measured through a water-quality or hardness test.
+              Visible scale buildup and soap-related issues can indicate hardness,
+              but testing gives a more reliable basis for selecting a treatment system.
+            </p>
+          </details>
 
-        <details class="faq-item">
-          <summary>How do I choose the right water softener capacity?</summary>
-          <p>
-            Capacity depends on factors such as water hardness, number of users,
-            daily water consumption and the amount of water that needs to be treated.
-            These factors should be considered before selecting the system size.
-          </p>
-        </details>
+          <details class="faq-item">
+            <summary>How often does a water softener need maintenance?</summary>
+            <p>
+              Maintenance depends on the type of system, water quality, household
+              usage and operating conditions. Regular servicing and checking the
+              system according to the manufacturer's recommendations helps maintain
+              performance.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does a water softener require salt?</summary>
+            <p>
+              Many conventional ion-exchange water softeners use salt during the
+              regeneration process. The exact requirement depends on the type and
+              model of water softener installed.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How much does a water softener cost?</summary>
+            <p>
+              The cost depends on the water hardness, household size, water
+              consumption, system capacity, installation requirements and the type
+              of softener selected. We recommend evaluating the requirement before
+              choosing a system.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can water softeners be installed in apartments?</summary>
+            <p>
+              Yes. Water softening solutions can be considered for apartments,
+              villas and other residential properties. The appropriate setup depends
+              on available installation space, plumbing configuration and the
+              requirement of the property.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can you install water softeners for commercial properties?</summary>
+            <p>
+              Yes. Water treatment requirements can be evaluated for offices,
+              commercial buildings, hotels, institutions and other properties.
+              System selection depends on water usage and application.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do you provide installation in Bangalore?</summary>
+            <p>
+              Yes. SV Marketing provides water softener solutions and installation
+              support for residential and commercial requirements in Bangalore,
+              subject to site and system requirements.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I get a water quality assessment before buying?</summary>
+            <p>
+              Yes. Assessing the source water and understanding the hardness and
+              intended usage can help determine the appropriate water-treatment
+              solution before installation.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I choose the right water softener capacity?</summary>
+            <p>
+              Capacity depends on factors such as water hardness, number of users,
+              daily water consumption and the amount of water that needs to be treated.
+              These factors should be considered before selecting the system size.
+            </p>
+          </details>
+
+        </div>
 
       </div>
 
+      <div class="center-button">
+        <button type="button" class="text-link faq-toggle" id="faqToggle">
+          View All FAQs →
+        </button>
+      </div>
+
     </div>
-
-    <div class="center-button">
-      <button type="button" class="text-link faq-toggle" id="faqToggle">
-        View All FAQs →
-      </button>
-    </div>
-
-  </div>
-</section>
-```
-
+  </section>
 
 
   <!-- ================= CONTACT ================= -->
@@ -452,6 +537,7 @@
     <div class="container contact-grid">
 
       <div class="contact-copy">
+        <p class="index-tag">GET IN TOUCH</p>
         <h2>Get a free water consultation</h2>
         <p>Tell us about your water source and what's bothering you about it — we'll recommend a system, not a sales pitch.</p>
 
