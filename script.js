@@ -2,6 +2,25 @@
    SV MARKETING — MAIN JAVASCRIPT
    ========================================================= */
 
+/* Global: image fallback, callable inline via onerror="" before DOM ready */
+function handleImageError(img) {
+  if (img.dataset.fallbackApplied) return;
+  img.dataset.fallbackApplied = "true";
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "img-placeholder";
+  wrapper.style.aspectRatio = img.dataset.ratio || "4 / 3";
+
+  const path = img.getAttribute("src");
+  wrapper.innerHTML =
+    '<span class="img-placeholder-icon" aria-hidden="true">🖼️</span>' +
+    '<span class="img-placeholder-text">Add image here<br><code>' + path + '</code></span>';
+
+  img.replaceWith(wrapper);
+}
+window.handleImageError = handleImageError;
+
+
 document.addEventListener("DOMContentLoaded", function () {
   initializeTheme();
   initializeFAQ();
@@ -50,6 +69,10 @@ function initializeTheme() {
 
 
 /* =========================================================
+   FAQ ACCORDION
+   ========================================================= */
+
+/* =========================================================
    FAQ ACCORDION + VIEW ALL
    ========================================================= */
 
@@ -58,7 +81,7 @@ function initializeFAQ() {
   const faqToggle = document.getElementById("faqToggle");
   const faqExtra = document.querySelector(".faq-extra");
 
-  // FAQ accordion — one open at a time
+  // FAQ accordion
   faqItems.forEach(function (item) {
     item.addEventListener("toggle", function () {
       if (item.open) {
@@ -97,6 +120,7 @@ function initializeFAQ() {
     });
   }
 }
+
 
 
 /* =========================================================
