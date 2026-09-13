@@ -124,70 +124,83 @@
 
 <main id="main">
 
-  <!-- ================= HERO ================= -->
-  <section class="hero" id="top">
-    <div class="hero-ripples" aria-hidden="true">
-      <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path class="ripple-path ripple-path-1" d="M0,80 C 240,140 480,20 720,60 C 960,100 1200,20 1440,80 L1440,200 L0,200 Z" fill="var(--water-light)" opacity="0.14"/><path class="ripple-path ripple-path-2" d="M0,110 C 240,60 480,160 720,110 C 960,60 1200,150 1440,110 L1440,200 L0,200 Z" fill="var(--water)" opacity="0.10"/></svg>
-    </div>
-    <div class="container hero-grid">
+  <!-- ================= HERO BANNER SLIDER ================= -->
+  <section class="hero-banner" id="top">
 
-      <div class="hero-copy">
-        <p class="hero-kicker">Serving homes &amp; businesses across Bengaluru</p>
-        <h1>Water your home can actually trust</h1>
-        <p class="hero-lede">Most Bengaluru borewells run hard. SV Marketing fits ZeroB softeners and purifiers sized to your actual water, not a generic package.</p>
-        <p class="hero-body">We test your source, walk you through what a softener does versus a purifier, and install a system built for your household size and usage — apartments, independent homes, offices and institutions alike.</p>
+    <div class="banner-slider" id="bannerSlider">
+      <div class="banner-track" id="bannerTrack">
 
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-shimmer">Book free water test</a>
-          <a href="https://wa.me/919902340759" class="btn btn-whatsapp" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.3-.2.6.2.4.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.8 1.6.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
-            WhatsApp us
-          </a>
+        <div class="banner-slide is-active" data-slide="0">
+          <img src="banner-slide-1.jpg" alt="Clean water flowing from a kitchen tap in a Bengaluru home" class="banner-img" data-ratio="16/9" onerror="handleImageError(this)">
+          <div class="banner-overlay"></div>
+          <div class="container banner-content">
+            <p class="hero-kicker">Serving homes &amp; businesses across Bengaluru</p>
+            <h1>Water your home can actually trust</h1>
+            <p class="hero-lede">Most Bengaluru borewells run hard. SV Marketing fits ZeroB softeners and purifiers sized to your actual water, not a generic package.</p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary btn-shimmer">Book free water test</a>
+              <a href="https://wa.me/919902340759" class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.3-.2.6.2.4.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.8 1.6.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
+                WhatsApp us
+              </a>
+            </div>
+          </div>
         </div>
 
+        <div class="banner-slide" data-slide="1">
+          <img src="banner-slide-2.jpg" alt="ZeroB water softener unit installed in a home utility area" class="banner-img" data-ratio="16/9" onerror="handleImageError(this)">
+          <div class="banner-overlay"></div>
+          <div class="container banner-content">
+            <p class="hero-kicker">ZeroB Authorised Dealer</p>
+            <h1>Softeners built for Bengaluru's hard water</h1>
+            <p class="hero-lede">Scale on your taps, soap that won't lather, a geyser working overtime — a softener sized to your source fixes it at the root.</p>
+            <div class="hero-actions">
+              <a href="#solutions" class="btn btn-primary btn-shimmer">See softener solutions</a>
+              <a href="https://wa.me/919902340759" class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.3-.2.6.2.4.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.8 1.6.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
+                WhatsApp us
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="banner-slide" data-slide="2">
+          <img src="banner-slide-3.jpg" alt="Family drinking clean purified water at home in Bengaluru" class="banner-img" data-ratio="16/9" onerror="handleImageError(this)">
+          <div class="banner-overlay"></div>
+          <div class="container banner-content">
+            <p class="hero-kicker">Free Water Test, No Obligation</p>
+            <h1>Drinking water you don't have to think twice about</h1>
+            <p class="hero-lede">We match your purifier to your actual TDS reading, not a one-size-fits-all box — for homes, offices and institutions alike.</p>
+            <div class="hero-actions">
+              <a href="#finder" class="btn btn-primary btn-shimmer">Find my solution</a>
+              <a href="https://wa.me/919902340759" class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.3-.2.6.2.4.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.8 1.6.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
+                WhatsApp us
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="button" class="banner-arrow banner-prev" id="bannerPrev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="banner-arrow banner-next" id="bannerNext" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="banner-dots" id="bannerDots" role="tablist" aria-label="Banner slides"></div>
+
+      <div class="banner-trust container">
         <ul class="hero-trust">
           <li><strong>Bengaluru-based</strong> — local water knowledge</li>
           <li><strong>ZeroB systems</strong> — sized, not standard</li>
           <li><strong>Free test</strong> before any recommendation</li>
         </ul>
       </div>
-
-      <div class="hero-visual">
-        <div class="hero-photo-frame">
-          <img src="hero-water-softener.jpg" alt="Clean water flowing from a kitchen tap" class="hero-photo" data-ratio="4/3" onerror="handleImageError(this)">
-          <span class="droplet droplet-a" aria-hidden="true"></span>
-          <span class="droplet droplet-b" aria-hidden="true"></span>
-          <span class="droplet droplet-c" aria-hidden="true"></span>
-        </div>
-
-        <div class="gauge-card">
-          <svg class="gauge" viewBox="0 0 300 175" role="img" aria-label="Water hardness gauge showing a hard reading">
-            <defs>
-              <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="var(--water-light)"/>
-                <stop offset="55%" stop-color="var(--water)"/>
-                <stop offset="100%" stop-color="var(--copper)"/>
-              </linearGradient>
-            </defs>
-            <path d="M20,150 A130,130 0 0 1 280,150" fill="none" stroke="var(--line-strong)" stroke-width="20" stroke-linecap="round"/>
-            <path class="gauge-fill" d="M20,150 A130,130 0 0 1 280,150" fill="none" stroke="url(#gaugeGradient)" stroke-width="20" stroke-linecap="round"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(-70 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(-35 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(0 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(35 150 150)"/>
-            <line x1="150" y1="150" x2="150" y2="34" stroke="var(--line-strong)" stroke-width="3" transform="rotate(70 150 150)"/>
-            <g class="gauge-needle">
-              <line x1="150" y1="150" x2="205" y2="58" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
-              <circle cx="150" cy="150" r="10" fill="var(--copper)"/>
-            </g>
-            <text x="30" y="172" class="gauge-label">Soft</text>
-            <text x="238" y="172" class="gauge-label">Hard</text>
-          </svg>
-          <p class="gauge-readout"><strong>312 ppm</strong> — a typical Bengaluru borewell reading</p>
-        </div>
-      </div>
-
     </div>
+
     <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C 360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--surface)"/></svg></div>
   </section>
 
