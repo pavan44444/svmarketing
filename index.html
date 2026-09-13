@@ -64,6 +64,18 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- Ambient water backdrop: bubbles + light-caustics, decorative only -->
+<div class="ambient-water" aria-hidden="true">
+  <div class="caustics"></div>
+  <span class="bubble" style="--x:6%;  --size:10px; --dur:14s; --delay:0s;"></span>
+  <span class="bubble" style="--x:18%; --size:6px;  --dur:11s; --delay:2s;"></span>
+  <span class="bubble" style="--x:34%; --size:13px; --dur:17s; --delay:1s;"></span>
+  <span class="bubble" style="--x:52%; --size:7px;  --dur:12s; --delay:4s;"></span>
+  <span class="bubble" style="--x:68%; --size:11px; --dur:16s; --delay:3s;"></span>
+  <span class="bubble" style="--x:81%; --size:5px;  --dur:10s; --delay:5s;"></span>
+  <span class="bubble" style="--x:93%; --size:9px;  --dur:15s; --delay:2.5s;"></span>
+</div>
+
 <!-- ================= HEADER ================= -->
 <header class="header">
   <div class="container nav-container">
@@ -115,7 +127,7 @@
   <!-- ================= HERO ================= -->
   <section class="hero" id="top">
     <div class="hero-ripples" aria-hidden="true">
-      <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path d="M0,80 C 240,140 480,20 720,60 C 960,100 1200,20 1440,80 L1440,200 L0,200 Z" fill="var(--water-light)" opacity="0.14"/><path d="M0,110 C 240,60 480,160 720,110 C 960,60 1200,150 1440,110 L1440,200 L0,200 Z" fill="var(--water)" opacity="0.10"/></svg>
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path class="ripple-path ripple-path-1" d="M0,80 C 240,140 480,20 720,60 C 960,100 1200,20 1440,80 L1440,200 L0,200 Z" fill="var(--water-light)" opacity="0.14"/><path class="ripple-path ripple-path-2" d="M0,110 C 240,60 480,160 720,110 C 960,60 1200,150 1440,110 L1440,200 L0,200 Z" fill="var(--water)" opacity="0.10"/></svg>
     </div>
     <div class="container hero-grid">
 
@@ -126,7 +138,7 @@
         <p class="hero-body">We test your source, walk you through what a softener does versus a purifier, and install a system built for your household size and usage — apartments, independent homes, offices and institutions alike.</p>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book free water test</a>
+          <a href="#contact" class="btn btn-primary btn-shimmer">Book free water test</a>
           <a href="https://wa.me/919902340759" class="btn btn-whatsapp" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.3-.2.6.2.4.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.8 1.6.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
             WhatsApp us
@@ -141,7 +153,12 @@
       </div>
 
       <div class="hero-visual">
-        <img src="hero-water-softener.jpg" alt="Clean water flowing from a kitchen tap" class="hero-photo" data-ratio="4/3" onerror="handleImageError(this)">
+        <div class="hero-photo-frame">
+          <img src="hero-water-softener.jpg" alt="Clean water flowing from a kitchen tap" class="hero-photo" data-ratio="4/3" onerror="handleImageError(this)">
+          <span class="droplet droplet-a" aria-hidden="true"></span>
+          <span class="droplet droplet-b" aria-hidden="true"></span>
+          <span class="droplet droplet-c" aria-hidden="true"></span>
+        </div>
 
         <div class="gauge-card">
           <svg class="gauge" viewBox="0 0 300 175" role="img" aria-label="Water hardness gauge showing a hard reading">
@@ -328,7 +345,7 @@
 
 
   <!-- ================= HARD WATER PROBLEMS ================= -->
-  <section class="problems section">
+  <section class="problems section" id="problems">
     <div class="container">
 
       <div class="section-heading">
@@ -713,6 +730,7 @@
 
   <!-- ================= CONTACT ================= -->
   <section class="contact" id="contact">
+    <div class="contact-ripples" aria-hidden="true"></div>
     <div class="container contact-grid">
 
       <div class="contact-copy">
