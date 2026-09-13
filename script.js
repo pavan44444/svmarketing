@@ -711,7 +711,7 @@ function initializeBannerSlider() {
   const dotsWrap = document.getElementById("bannerDots");
   if (!slides.length) return;
 
-  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+//  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const AUTOPLAY_MS = 4000;
   let current = 0;
   let autoplayTimer = null;
@@ -744,7 +744,7 @@ function initializeBannerSlider() {
   function prevSlide() { goToSlide(current - 1); }
 
   function startAutoplay() {
-    if (prefersReducedMotion || slides.length < 2) return;
+    if (slides.length < 2) return;
     stopAutoplay();
     autoplayTimer = setInterval(nextSlide, AUTOPLAY_MS);
   }
