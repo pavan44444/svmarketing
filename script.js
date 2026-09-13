@@ -281,26 +281,31 @@ function initializeContactForm() {
 
 /* =========================================================
    SITE SEARCH — fully dynamic, built from the live page
+
+   No hardcoded content list. On first open we walk every element in
+   <header>, <main> and <footer>, find the smallest text-bearing
+   elements ("leaf" nodes — a paragraph, a list item, a heading, a
+   summary, a button, a link, a form label, a figure caption, a chip),
+   and index each one individually. If a word exists anywhere on the
+   rendered page, it is searchable — including the FAQ answers, every
+   checklist line, every service area chip, testimonials, gallery
+   captions, nav links, and button/CTA text.
    ========================================================= */
 
-/* Blocks worth indexing as one search "card". Each entry: the CSS
-   selector for a repeating content block, and a human tag label used
-   when we can't find one nearby. Every word on the page that lives
-   inside one of these blocks becomes searchable — nothing hardcoded. */
-const SEARCH_BLOCKS = [
-  { selector: ".hero-copy", tag: "Home" },
-  { selector: ".journey-step", tag: "How it works" },
-  { selector: ".solution-copy", tag: "Solution" },
-  { selector: ".finder .section-heading", tag: "Tool" },
-  { selector: ".problem-item", tag: "Problem" },
-  { selector: ".why-us-copy", tag: "About" },
-  { selector: ".gallery-item", tag: "Gallery" },
-  { selector: ".testimonial-card", tag: "Review" },
-  { selector: ".location-copy", tag: "Location" },
-  { selector: ".area-chips", tag: "Areas" },
-  { selector: ".faq-item", tag: "FAQ" },
-  { selector: ".contact-copy", tag: "Contact" }
-];
+const SEARCH_LEAF_SELECTOR = [
+  "h1", "h2", "h3", "h4",
+  "p", "li", "summary", "figcaption", "blockquote",
+  "label", "a[href]", "button",
+  "dt", "dd", "td", "th"
+].join(", ");
+
+/* Elements we never want to show up as their own result — pure UI
+   chrome, icons, or containers that just wrap something already indexed. */
+const SEARCH_EXCLUDE_SELECTOR = [
+  ".search-toggle", ".search-close", ".theme-toggle", ".menu-toggle",
+  ".scroll-top", "#siteSearchInput", ".search-form *", ".faq-toggle",
+  ".finder-restart", "#finderRestart", ".gauge-label", ".skip-link"
+].join(", ");
 
 const SECTION_LABELS = {
   top: "Home", journey: "How it works", solutions: "Solutions",
@@ -311,57 +316,83 @@ const SECTION_LABELS = {
 
 let siteSearchIndex = null;
 
+function nearestSectionId(el) {
+  const sectionEl = el.closest("section[id], [id]");
+  return sectionEl ? sectionEl.id : "top";
+}
+
+function nearestHeadingText(el) {
+  let node = el;
+  while (node && node !== document.body) {
+    let sibling = node.previousElementSibling;
+    while (sibling) {
+      const heading = sibling.matches("h1, h2, h3, h4")
+        ? sibling
+        : sibling.querySelector && sibling.querySelector("h1, h2, h3, h4");
+      if (heading) return heading.textContent.trim();
+      sibling = sibling.previousElementSibling;
+    }
+    node = node.parentElement;
+    if (node && node.matches && node.matches("h1, h2, h3, h4")) return "";
+  }
+  return "";
+}
+
 function buildSiteSearchIndex() {
   const index = [];
   const seen = new Set();
+  const roots = document.querySelectorAll("header, main, footer");
 
-  SEARCH_BLOCKS.forEach(function (block) {
-    document.querySelectorAll("main " + block.selector).forEach(function (el) {
-      const headingEl = el.querySelector("h1, h2, h3, summary, figcaption, strong");
-      let title = headingEl ? headingEl.textContent.trim() : "";
-      const fullText = el.textContent.replace(/\s+/g, " ").trim();
+  roots.forEach(function (root) {
+    root.querySelectorAll(SEARCH_LEAF_SELECTOR).forEach(function (el) {
+      if (el.closest(SEARCH_EXCLUDE_SELECTOR)) return;
 
-      if (!title) {
-        title = fullText.slice(0, 60) + (fullText.length > 60 ? "…" : "");
+      /* Skip if this element's own text is fully duplicated inside a
+         descendant we will also index (e.g. an <li> that only wraps
+         an <a> — index the anchor, not the wrapper, to avoid doubles). */
+      const nestedLeaf = el.querySelector(SEARCH_LEAF_SELECTOR);
+      const directText = Array.from(el.childNodes)
+        .filter(function (n) { return n.nodeType === Node.TEXT_NODE; })
+        .map(function (n) { return n.textContent; })
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      if (nestedLeaf && !directText) return; // pure wrapper, let the child be indexed instead
+
+      const text = el.textContent.replace(/\s+/g, " ").trim();
+      if (!text || text.length < 2) return;
+
+      const sectionId = nearestSectionId(el);
+      let href = "#" + (sectionId || "top");
+      if (el.tagName === "A" && el.getAttribute("href") && el.getAttribute("href").startsWith("#")) {
+        href = el.getAttribute("href");
       }
 
-      let snippet = fullText;
-      if (headingEl) snippet = snippet.replace(headingEl.textContent.trim(), "").trim();
-      snippet = snippet.slice(0, 150) + (snippet.length > 150 ? "…" : "");
+      let title = text;
+      let snippet = "";
+      if (el.matches("h1, h2, h3, h4, summary")) {
+        title = text;
+      } else {
+        const heading = nearestHeadingText(el);
+        title = heading || text.slice(0, 60);
+        snippet = text;
+      }
+      if (snippet.length > 160) snippet = snippet.slice(0, 160) + "…";
 
-      const sectionEl = el.closest("section[id], [id]");
-      const sectionId = sectionEl ? sectionEl.id : "top";
-      const href = "#" + (sectionId || "top");
-      const tag = SECTION_LABELS[sectionId] || block.tag;
-
-      const dedupeKey = title + "|" + href;
-      if (seen.has(dedupeKey) || !fullText) return;
+      const tag = SECTION_LABELS[sectionId] || "Page";
+      const dedupeKey = text.toLowerCase() + "|" + href;
+      if (seen.has(dedupeKey)) return;
       seen.add(dedupeKey);
 
-      index.push({ title: title, snippet: snippet, fullText: fullText.toLowerCase(), href: href, tag: tag, targetEl: el });
-    });
-  });
-
-  /* Also sweep any remaining headings in main that weren't captured above,
-     so nothing on the page is unsearchable even if new sections get added
-     later without updating this list. */
-  document.querySelectorAll("main h2, main h3").forEach(function (heading) {
-    const title = heading.textContent.trim();
-    const already = index.some(function (item) { return item.title === title; });
-    if (already || !title) return;
-
-    const container = heading.closest("section") || heading.parentElement;
-    const fullText = container ? container.textContent.replace(/\s+/g, " ").trim() : title;
-    const sectionEl = heading.closest("section[id], [id]");
-    const sectionId = sectionEl ? sectionEl.id : "top";
-
-    index.push({
-      title: title,
-      snippet: fullText.replace(title, "").trim().slice(0, 150),
-      fullText: fullText.toLowerCase(),
-      href: "#" + (sectionId || "top"),
-      tag: SECTION_LABELS[sectionId] || "Page",
-      targetEl: container
+      index.push({
+        title: title,
+        snippet: snippet,
+        fullText: (title + " " + snippet + " " + text).toLowerCase(),
+        href: href,
+        tag: tag,
+        targetEl: el.tagName === "DETAILS" ? el : el.closest("details") || el
+      });
     });
   });
 
