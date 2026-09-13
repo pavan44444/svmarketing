@@ -7,26 +7,28 @@
 html { scroll-behavior: smooth; }
 
 :root {
-  --ink: #0E2A32;
-  --ink-soft: #4C6870;
-  --ink-faint: #7C949A;
+  --ink: #101A2E;
+  --ink-soft: #4A5670;
+  --ink-faint: #8089A0;
 
-  --surface: #F6F9F9;
+  --surface: #F5F7FB;
   --surface-raised: #FFFFFF;
-  --surface-sunken: #E9F0F1;
+  --surface-sunken: #EAEEF7;
 
-  --water-deep: #0A4A5E;
-  --water: #127E9A;
-  --water-light: #5CB8D1;
+  /* Deep Cobalt + Electric Azure — the "water" role, unambiguously blue */
+  --water-deep: #16305C;
+  --water: #2F6FED;
+  --water-light: #7FADFF;
 
-  --copper: #B5652D;
-  --copper-light: #E3B08C;
+  /* Coral Flame — the warm accent role, replaces the muddier copper */
+  --copper: #FF6B4A;
+  --copper-light: #FFC7B8;
 
-  --line: #D7E4E5;
-  --line-strong: #B9CDCF;
+  --line: #DEE4F0;
+  --line-strong: #C1CAE0;
 
-  --shadow-sm: 0 6px 18px rgba(14, 42, 50, 0.07);
-  --shadow-md: 0 18px 40px rgba(14, 42, 50, 0.10);
+  --shadow-sm: 0 6px 18px rgba(16, 26, 46, 0.08);
+  --shadow-md: 0 18px 40px rgba(16, 26, 46, 0.14);
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Work Sans", Arial, sans-serif;
@@ -35,26 +37,26 @@ html { scroll-behavior: smooth; }
 }
 
 body.dark-theme {
-  --ink: #E8F3F5;
-  --ink-soft: #A9C4CA;
-  --ink-faint: #7C9BA2;
+  --ink: #E9EDF8;
+  --ink-soft: #A9B4CC;
+  --ink-faint: #7986A3;
 
-  --surface: #08181D;
-  --surface-raised: #0E262D;
-  --surface-sunken: #0B2027;
+  --surface: #0A1220;
+  --surface-raised: #121D33;
+  --surface-sunken: #0E1728;
 
-  --water-deep: #6FCBE3;
-  --water: #39A9C8;
-  --water-light: #8FDCEE;
+  --water-deep: #7FADFF;
+  --water: #4C86F5;
+  --water-light: #A9C8FF;
 
-  --copper: #E08A46;
-  --copper-light: #7A4A28;
+  --copper: #FF8467;
+  --copper-light: #7A3323;
 
-  --line: #173239;
-  --line-strong: #234853;
+  --line: #202D48;
+  --line-strong: #2E3E60;
 
-  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.30);
-  --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.40);
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
 body {
