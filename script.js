@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeSolutionFinder();
   initializeTestimonialCarousel();
   initializeJourneyReveal();
+  initializeBannerSlider();
 });
 
 
@@ -304,7 +305,8 @@ const SEARCH_LEAF_SELECTOR = [
 const SEARCH_EXCLUDE_SELECTOR = [
   ".search-toggle", ".search-close", ".theme-toggle", ".menu-toggle",
   ".scroll-top", "#siteSearchInput", ".search-form *", ".faq-toggle",
-  ".finder-restart", "#finderRestart", ".gauge-label", ".skip-link"
+  ".finder-restart", "#finderRestart", ".gauge-label", ".skip-link",
+  ".banner-arrow", ".banner-dot"
 ].join(", ");
 
 const SECTION_LABELS = {
@@ -689,4 +691,95 @@ function initializeJourneyReveal() {
   }, { threshold: 0.3 });
 
   steps.forEach(function (step) { observer.observe(step); });
+}
+
+
+/* =========================================================
+   HERO BANNER SLIDER — full-width auto-sliding banner
+   Autoplay every 5s, arrows, clickable dots, swipe on touch,
+   pauses on hover/touch, respects prefers-reduced-motion.
+   ========================================================= */
+
+function initializeBannerSlider() {
+  const slider = document.getElementById("bannerSlider");
+  const track = document.getElementById("bannerTrack");
+  if (!slider || !track) return;
+
+  const slides = Array.from(track.querySelectorAll(".banner-slide"));
+  const prevBtn = document.getElementById("bannerPrev");
+  const nextBtn = document.getElementById("bannerNext");
+  const dotsWrap = document.getElementById("bannerDots");
+  if (!slides.length) return;
+
+  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const AUTOPLAY_MS = 5500;
+  let current = 0;
+  let autoplayTimer = null;
+
+  // Build dots
+  const dots = slides.map(function (_, i) {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "banner-dot" + (i === 0 ? " is-active" : "");
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+    dot.addEventListener("click", function () {
+      goToSlide(i);
+      restartAutoplay();
+    });
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function goToSlide(index) {
+    const nextIndex = (index + slides.length) % slides.length;
+    slides[current].classList.remove("is-active");
+    dots[current].classList.remove("is-active");
+    current = nextIndex;
+    slides[current].classList.add("is-active");
+    dots[current].classList.add("is-active");
+  }
+
+  function nextSlide() { goToSlide(current + 1); }
+  function prevSlide() { goToSlide(current - 1); }
+
+  function startAutoplay() {
+    if (prefersReducedMotion || slides.length < 2) return;
+    stopAutoplay();
+    autoplayTimer = setInterval(nextSlide, AUTOPLAY_MS);
+  }
+  function stopAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  }
+  function restartAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  prevBtn?.addEventListener("click", function () { prevSlide(); restartAutoplay(); });
+  nextBtn?.addEventListener("click", function () { nextSlide(); restartAutoplay(); });
+
+  slider.addEventListener("mouseenter", stopAutoplay);
+  slider.addEventListener("mouseleave", startAutoplay);
+  slider.addEventListener("focusin", stopAutoplay);
+  slider.addEventListener("focusout", startAutoplay);
+
+  // Touch swipe support
+  let touchStartX = null;
+  slider.addEventListener("touchstart", function (e) {
+    touchStartX = e.touches[0].clientX;
+    stopAutoplay();
+  }, { passive: true });
+  slider.addEventListener("touchend", function (e) {
+    if (touchStartX === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(deltaX) > 40) {
+      if (deltaX < 0) nextSlide(); else prevSlide();
+    }
+    touchStartX = null;
+    startAutoplay();
+  }, { passive: true });
+
+  startAutoplay();
 }
