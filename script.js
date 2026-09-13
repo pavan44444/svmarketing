@@ -712,7 +712,7 @@ function initializeBannerSlider() {
   if (!slides.length) return;
 
   const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const AUTOPLAY_MS = 5500;
+  const AUTOPLAY_MS = 4000;
   let current = 0;
   let autoplayTimer = null;
 
