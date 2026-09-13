@@ -239,6 +239,14 @@ function initializeContactForm() {
     });
   });
 
+  let successNote = contactForm.querySelector(".form-success");
+  if (!successNote) {
+    successNote = document.createElement("p");
+    successNote.className = "form-success";
+    successNote.innerHTML = '<span aria-hidden="true">✓</span><span>Opening WhatsApp with your details filled in — just hit send there.</span>';
+    contactForm.appendChild(successNote);
+  }
+
   contactForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -246,6 +254,7 @@ function initializeContactForm() {
     if (validations.includes(false)) {
       const firstInvalid = contactForm.querySelector(".is-invalid");
       if (firstInvalid) firstInvalid.focus();
+      successNote.classList.remove("show");
       return;
     }
 
@@ -265,31 +274,113 @@ function initializeContactForm() {
 
     const whatsappURL = "https://wa.me/919902340759?text=" + encodeURIComponent(whatsappMessage);
     window.open(whatsappURL, "_blank");
+    successNote.classList.add("show");
   });
 }
 
 
 /* =========================================================
-   SITE SEARCH
+   SITE SEARCH — fully dynamic, built from the live page
    ========================================================= */
 
-const SITE_SEARCH_INDEX = [
-  { title: "Water Softener", tag: "Solution", href: "#solutions", snippet: "Removes calcium and magnesium that cause scale, film and appliance wear.", keywords: "softener hardness scale ion exchange calcium magnesium" },
-  { title: "Water Purifier", tag: "Solution", href: "#solutions", snippet: "Matched to your TDS and source for safer drinking water.", keywords: "purifier RO drinking water TDS taste smell" },
-  { title: "Find my solution", tag: "Tool", href: "#finder", snippet: "Answer three quick questions for a starting recommendation.", keywords: "finder tool recommendation quiz source property problem" },
-  { title: "Scale on taps & fittings", tag: "Problem", href: "#top", snippet: "Chalky white deposits building up around taps and shower heads.", keywords: "scale white deposits taps shower hard water" },
-  { title: "Soap won't lather", tag: "Problem", href: "#top", snippet: "Hardness minerals bind with soap before it can work.", keywords: "soap lather detergent hard water" },
-  { title: "Water heaters scaling up", tag: "Problem", href: "#top", snippet: "Sediment builds inside geysers, cutting efficiency.", keywords: "geyser heater scale sediment efficiency" },
-  { title: "Why SV Marketing", tag: "About", href: "#why-us", snippet: "ZeroB systems sized to your water, not a fixed package.", keywords: "why us zerob local experience service" },
-  { title: "Installation gallery", tag: "Gallery", href: "#gallery", snippet: "Recent softener and purifier installs across Bengaluru.", keywords: "gallery installation photos apartments office" },
-  { title: "Customer reviews", tag: "Reviews", href: "#testimonials", snippet: "What Bengaluru households and offices say about us.", keywords: "testimonials reviews customers feedback" },
-  { title: "Service areas in Bengaluru", tag: "Areas", href: "#areas", snippet: "Rajajinagar, Whitefield, Jayanagar, Electronic City and more.", keywords: "areas bengaluru rajajinagar whitefield jayanagar electronic city magadi road service area" },
-  { title: "What is a water softener?", tag: "FAQ", href: "#faq", snippet: "A system designed primarily to reduce hardness-causing minerals.", keywords: "faq what is water softener" },
-  { title: "Is a softener the same as an RO purifier?", tag: "FAQ", href: "#faq", snippet: "No — they address different needs.", keywords: "faq softener vs purifier ro difference" },
-  { title: "How much does a water softener cost?", tag: "FAQ", href: "#faq", snippet: "Depends on hardness, household size and capacity.", keywords: "faq cost price water softener" },
-  { title: "Can softeners be installed in apartments?", tag: "FAQ", href: "#faq", snippet: "Yes, subject to installation space and plumbing.", keywords: "faq apartment installation villa" },
-  { title: "Get a free water consultation", tag: "Contact", href: "#contact", snippet: "Call, WhatsApp, or send us your details for a free test.", keywords: "contact whatsapp call phone free test consultation" }
+/* Blocks worth indexing as one search "card". Each entry: the CSS
+   selector for a repeating content block, and a human tag label used
+   when we can't find one nearby. Every word on the page that lives
+   inside one of these blocks becomes searchable — nothing hardcoded. */
+const SEARCH_BLOCKS = [
+  { selector: ".hero-copy", tag: "Home" },
+  { selector: ".journey-step", tag: "How it works" },
+  { selector: ".solution-copy", tag: "Solution" },
+  { selector: ".finder .section-heading", tag: "Tool" },
+  { selector: ".problem-item", tag: "Problem" },
+  { selector: ".why-us-copy", tag: "About" },
+  { selector: ".gallery-item", tag: "Gallery" },
+  { selector: ".testimonial-card", tag: "Review" },
+  { selector: ".location-copy", tag: "Location" },
+  { selector: ".area-chips", tag: "Areas" },
+  { selector: ".faq-item", tag: "FAQ" },
+  { selector: ".contact-copy", tag: "Contact" }
 ];
+
+const SECTION_LABELS = {
+  top: "Home", journey: "How it works", solutions: "Solutions",
+  finder: "Solution Finder", problems: "Common problems", "why-us": "Why us",
+  gallery: "Installations", testimonials: "Reviews", areas: "Service areas",
+  faq: "FAQ", contact: "Contact"
+};
+
+let siteSearchIndex = null;
+
+function buildSiteSearchIndex() {
+  const index = [];
+  const seen = new Set();
+
+  SEARCH_BLOCKS.forEach(function (block) {
+    document.querySelectorAll("main " + block.selector).forEach(function (el) {
+      const headingEl = el.querySelector("h1, h2, h3, summary, figcaption, strong");
+      let title = headingEl ? headingEl.textContent.trim() : "";
+      const fullText = el.textContent.replace(/\s+/g, " ").trim();
+
+      if (!title) {
+        title = fullText.slice(0, 60) + (fullText.length > 60 ? "…" : "");
+      }
+
+      let snippet = fullText;
+      if (headingEl) snippet = snippet.replace(headingEl.textContent.trim(), "").trim();
+      snippet = snippet.slice(0, 150) + (snippet.length > 150 ? "…" : "");
+
+      const sectionEl = el.closest("section[id], [id]");
+      const sectionId = sectionEl ? sectionEl.id : "top";
+      const href = "#" + (sectionId || "top");
+      const tag = SECTION_LABELS[sectionId] || block.tag;
+
+      const dedupeKey = title + "|" + href;
+      if (seen.has(dedupeKey) || !fullText) return;
+      seen.add(dedupeKey);
+
+      index.push({ title: title, snippet: snippet, fullText: fullText.toLowerCase(), href: href, tag: tag, targetEl: el });
+    });
+  });
+
+  /* Also sweep any remaining headings in main that weren't captured above,
+     so nothing on the page is unsearchable even if new sections get added
+     later without updating this list. */
+  document.querySelectorAll("main h2, main h3").forEach(function (heading) {
+    const title = heading.textContent.trim();
+    const already = index.some(function (item) { return item.title === title; });
+    if (already || !title) return;
+
+    const container = heading.closest("section") || heading.parentElement;
+    const fullText = container ? container.textContent.replace(/\s+/g, " ").trim() : title;
+    const sectionEl = heading.closest("section[id], [id]");
+    const sectionId = sectionEl ? sectionEl.id : "top";
+
+    index.push({
+      title: title,
+      snippet: fullText.replace(title, "").trim().slice(0, 150),
+      fullText: fullText.toLowerCase(),
+      href: "#" + (sectionId || "top"),
+      tag: SECTION_LABELS[sectionId] || "Page",
+      targetEl: container
+    });
+  });
+
+  return index;
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+function highlightMatch(text, query) {
+  if (!query) return escapeHtml(text);
+  const escaped = escapeHtml(text);
+  const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp("(" + safeQuery + ")", "ig");
+  return escaped.replace(re, "<mark>$1</mark>");
+}
 
 function initializeSiteSearch() {
   const toggle = document.querySelector(".search-toggle");
@@ -299,9 +390,15 @@ function initializeSiteSearch() {
   const closeBtn = document.querySelector(".search-close");
   if (!toggle || !panel || !input || !resultsList) return;
 
+  function ensureIndex() {
+    if (!siteSearchIndex) siteSearchIndex = buildSiteSearchIndex();
+    return siteSearchIndex;
+  }
+
   function openSearch() {
     panel.hidden = false;
     toggle.setAttribute("aria-expanded", "true");
+    ensureIndex();
     input.focus();
   }
 
@@ -329,12 +426,20 @@ function initializeSiteSearch() {
   function renderResults(query) {
     const q = query.trim().toLowerCase();
     resultsList.innerHTML = "";
-
     if (!q) return;
 
-    const matches = SITE_SEARCH_INDEX.filter(function (item) {
-      return (item.title + " " + item.snippet + " " + item.keywords).toLowerCase().includes(q);
-    }).slice(0, 8);
+    const index = ensureIndex();
+    const words = q.split(/\s+/).filter(Boolean);
+
+    const matches = index
+      .map(function (item) {
+        const haystack = (item.title + " " + item.snippet + " " + item.fullText).toLowerCase();
+        const hitCount = words.reduce(function (sum, w) { return sum + (haystack.includes(w) ? 1 : 0); }, 0);
+        return { item: item, hitCount: hitCount, exact: item.title.toLowerCase().includes(q) };
+      })
+      .filter(function (m) { return m.hitCount === words.length; })
+      .sort(function (a, b) { return (b.exact - a.exact) || (b.hitCount - a.hitCount); })
+      .slice(0, 8);
 
     if (!matches.length) {
       const li = document.createElement("li");
@@ -344,20 +449,21 @@ function initializeSiteSearch() {
       return;
     }
 
-    matches.forEach(function (item) {
+    matches.forEach(function (m) {
+      const item = m.item;
       const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = item.href;
       a.innerHTML =
-        '<span class="search-result-title">' + item.title + '</span>' +
-        '<span class="search-result-snippet">' + item.snippet + '</span>' +
-        '<span class="search-result-tag">' + item.tag + '</span>';
+        '<span class="search-result-title">' + highlightMatch(item.title, q) + '</span>' +
+        (item.snippet ? '<span class="search-result-snippet">' + highlightMatch(item.snippet, q) + '</span>' : "") +
+        '<span class="search-result-tag">' + escapeHtml(item.tag) + '</span>';
       a.addEventListener("click", function () {
         closeSearch();
         input.value = "";
         resultsList.innerHTML = "";
-        if (item.tag === "FAQ") {
-          setTimeout(function () { highlightFaqMatch(item.title); }, 350);
+        if (item.tag === "FAQ" && item.targetEl && item.targetEl.tagName === "DETAILS") {
+          setTimeout(function () { revealAndOpenFaq(item.targetEl); }, 350);
         }
       });
       li.appendChild(a);
@@ -368,22 +474,17 @@ function initializeSiteSearch() {
   input.addEventListener("input", function () { renderResults(input.value); });
 }
 
-function highlightFaqMatch(title) {
-  const summaries = document.querySelectorAll(".faq-item summary");
-  summaries.forEach(function (summary) {
-    if (summary.textContent.trim().toLowerCase() === title.trim().toLowerCase()) {
-      const parent = summary.closest(".faq-item");
-      const extraWrap = parent.closest(".faq-extra");
-      if (extraWrap && extraWrap.hasAttribute("hidden")) {
-        extraWrap.removeAttribute("hidden");
-        const toggleBtn = document.getElementById("faqToggle");
-        if (toggleBtn) toggleBtn.textContent = "Show Less ↑";
-      }
-      parent.setAttribute("open", "");
-      parent.classList.add("is-highlighted");
-      setTimeout(function () { parent.classList.remove("is-highlighted"); }, 2000);
-    }
-  });
+function revealAndOpenFaq(detailsEl) {
+  const extraWrap = detailsEl.closest(".faq-extra");
+  if (extraWrap && extraWrap.hasAttribute("hidden")) {
+    extraWrap.removeAttribute("hidden");
+    const toggleBtn = document.getElementById("faqToggle");
+    if (toggleBtn) toggleBtn.textContent = "Show Less ↑";
+  }
+  detailsEl.setAttribute("open", "");
+  detailsEl.classList.add("is-highlighted");
+  detailsEl.scrollIntoView({ behavior: "smooth", block: "center" });
+  setTimeout(function () { detailsEl.classList.remove("is-highlighted"); }, 2000);
 }
 
 
@@ -530,15 +631,17 @@ function initializeTestimonialCarousel() {
 
 
 /* =========================================================
-   JOURNEY SCROLL REVEAL
+   JOURNEY SCROLL REVEAL (+ flowing connector line)
    ========================================================= */
 
 function initializeJourneyReveal() {
   const steps = document.querySelectorAll(".journey-step");
+  const track = document.querySelector(".journey-track");
   if (!steps.length) return;
 
   if (!("IntersectionObserver" in window)) {
     steps.forEach(function (step) { step.classList.add("in-view"); });
+    if (track) track.classList.add("in-view");
     return;
   }
 
@@ -548,6 +651,7 @@ function initializeJourneyReveal() {
         const step = entry.target;
         const delay = (Number(step.dataset.step) - 1) * 90;
         setTimeout(function () { step.classList.add("in-view"); }, delay);
+        if (track && !track.classList.contains("in-view")) track.classList.add("in-view");
         observer.unobserve(step);
       }
     });
