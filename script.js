@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeTestimonialCarousel();
   initializeJourneyReveal();
   initializeBannerSlider();
+  initializeWaterCursor();
 });
 
 
@@ -782,4 +783,74 @@ function initializeBannerSlider() {
   }, { passive: true });
 
   startAutoplay();
+}
+/* =========================================================
+   CUSTOM WATER-DROP CURSOR
+   1) Add initializeWaterCursor(); to the existing
+      document.addEventListener("DOMContentLoaded", ...) list
+      near the top of script.js, alongside the other
+      initialize___() calls.
+   2) Paste this whole function anywhere else in script.js.
+   ========================================================= */
+
+function initializeWaterCursor() {
+  if (!window.matchMedia || !window.matchMedia("(pointer: fine)").matches) return;
+
+  const drop = document.createElement("div");
+  drop.className = "cursor-drop";
+  drop.setAttribute("aria-hidden", "true");
+  document.body.appendChild(drop);
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let dropX = mouseX;
+  let dropY = mouseY;
+  let hasMoved = false;
+
+  document.addEventListener("mousemove", function (e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!hasMoved) {
+      hasMoved = true;
+      dropX = mouseX;
+      dropY = mouseY;
+      drop.style.opacity = "1";
+    }
+  });
+
+  document.addEventListener("mouseleave", function () {
+    drop.style.opacity = "0";
+  });
+  document.addEventListener("mouseenter", function () {
+    if (hasMoved) drop.style.opacity = "1";
+  });
+
+  const interactiveSelector = "a, button, summary, .finder-option, [role='button'], .theme-toggle, .scroll-top";
+  document.addEventListener("mouseover", function (e) {
+    if (e.target.closest(interactiveSelector)) drop.classList.add("is-active");
+  });
+  document.addEventListener("mouseout", function (e) {
+    if (e.target.closest(interactiveSelector)) drop.classList.remove("is-active");
+  });
+
+  document.addEventListener("mousedown", function () {
+    drop.classList.add("is-clicking");
+    setTimeout(function () { drop.classList.remove("is-clicking"); }, 300);
+
+    const ripple = document.createElement("div");
+    ripple.className = "cursor-ripple";
+    ripple.style.left = mouseX + "px";
+    ripple.style.top = mouseY + "px";
+    document.body.appendChild(ripple);
+    ripple.addEventListener("animationend", function () { ripple.remove(); });
+  });
+
+  function tick() {
+    dropX += (mouseX - dropX) * 0.2;
+    dropY += (mouseY - dropY) * 0.2;
+    drop.style.left = dropX + "px";
+    drop.style.top = dropY + "px";
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 }

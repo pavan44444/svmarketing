@@ -1381,6 +1381,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .banner-slider { height: 100vh; min-height: 480px; max-height: 620px; }
   .banner-content { max-width: 100%; padding-right: 8px; }
   .banner-content .hero-lede { max-width: 100%; }
+  .banner-content {
+  margin-left: max(5%, calc((100% - 1180px) / 2));
+  margin-right: 0;
+}
   .banner-arrow { width: 38px; height: 38px; }
   .banner-prev { left: 12px; }
   .banner-next { right: 12px; }
@@ -1396,7 +1400,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   font: inherit;
   padding: 0;
 }
-
+.banner-content {
+  margin-left: calc(max(5%, calc((100% - 1180px) / 2)) + 40px);
+  margin-right: 0;
+}
 .faq-toggle:hover {
   text-decoration: underline;
 }
@@ -1687,4 +1694,138 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .product-sticky-cta .btn { min-height: 46px; padding: 0 12px; }
   .product-page { padding-bottom: 72px; }
   .product-page .scroll-top { bottom: 86px; }
+}
+.product-hero {
+  position: relative;
+  overflow: hidden;
+  background: #16305C;
+  color: #fff;
+}
+
+.product-hero::after { content: none; }
+
+.product-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.product-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(100deg, rgba(8,18,36,0.86) 0%, rgba(8,18,36,0.62) 46%, rgba(8,18,36,0.28) 82%);
+}
+body.dark-theme .product-hero-overlay {
+  background: linear-gradient(100deg, rgba(3,8,18,0.90) 0%, rgba(3,8,18,0.68) 46%, rgba(3,8,18,0.34) 82%);
+}
+
+.product-hero .container { position: relative; z-index: 2; }
+
+.product-hero .img-placeholder {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  border: none;
+  z-index: 0;
+}
+/* =========================================================
+   CUSTOM WATER-DROP CURSOR
+   Append to the END of style.css. Desktop / mouse only —
+   touch devices keep their normal behaviour.
+   ========================================================= */
+
+@media (pointer: fine) {
+
+  body { cursor: none; }
+  a, button, summary, .finder-option, .theme-toggle, .scroll-top,
+  .search-toggle, .search-close, .menu-toggle, .banner-arrow, .banner-dot,
+  [role="button"] { cursor: none; }
+
+  .cursor-drop {
+    position: fixed;
+    top: 0; left: 0;
+    width: 20px; height: 20px;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50% 50% 50% 0;
+    background: linear-gradient(135deg, var(--water-light), var(--water) 60%, var(--water-deep));
+    box-shadow: 0 3px 10px rgba(16,48,92,0.35), inset -2px -2px 4px rgba(8,18,36,0.25);
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transition: width 0.18s ease, height 0.18s ease, opacity 0.2s ease;
+    opacity: 0;
+  }
+
+  /* Small highlight for a wet, glassy look */
+  .cursor-drop::after {
+    content: "";
+    position: absolute;
+    top: 22%; left: 26%;
+    width: 30%; height: 30%;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.55);
+  }
+
+  /* Swells slightly over anything clickable */
+  .cursor-drop.is-active { width: 28px; height: 28px; }
+
+  /* Little squash-and-stretch "splash" on click */
+  .cursor-drop.is-clicking { animation: dropSquash 0.3s ease; }
+  @keyframes dropSquash {
+    0%   { width: 20px; height: 20px; }
+    40%  { width: 26px; height: 15px; }
+    100% { width: 20px; height: 20px; }
+  }
+
+  /* Expanding ring spawned on click */
+  .cursor-ripple {
+    position: fixed;
+    top: 0; left: 0;
+    width: 10px; height: 10px;
+    border: 2px solid var(--water-light);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    animation: cursorRippleOut 0.6s ease-out forwards;
+  }
+  @keyframes cursorRippleOut {
+    from { width: 10px; height: 10px; opacity: 0.6; }
+    to   { width: 60px; height: 60px; opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-drop { transition: none; }
+  .cursor-drop.is-clicking { animation: none; }
+  .cursor-ripple { animation: none; display: none; }
+}
+/* =========================================================
+   FIX: technology-tile icons (product-facts) rendering oversized
+   Append to the END of style.css.
+   ========================================================= */
+
+.product-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.product-fact { padding: 26px 24px; background: var(--surface-raised); }
+.product-fact svg { width: 30px; height: 30px; margin-bottom: 14px; color: var(--copper); display: block; }
+.product-fact h3 { margin-bottom: 6px; font-size: 16px; color: var(--ink); }
+.product-fact p { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); }
+
+@media (max-width: 960px) {
+  .product-facts { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .product-facts { grid-template-columns: 1fr; }
 }
