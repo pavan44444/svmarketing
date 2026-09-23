@@ -159,34 +159,47 @@ function initializeScrollTop() {
 
 
 /* =========================================================
-   SCROLL SPY (active nav link on this single page)
+   ACTIVE NAV LINK — based on the current page URL only.
+   No scroll-based switching: whichever nav item matches the
+   page you're on stays bordered the whole time you're on it,
+   including on index.html, no matter how far you scroll.
    ========================================================= */
 
 function initializeScrollSpy() {
-  const sections = document.querySelectorAll("main [id]");
   const navLinks = document.querySelectorAll(".navbar a");
-  if (!sections.length || !navLinks.length || !("IntersectionObserver" in window)) return;
+  if (!navLinks.length) return;
 
-  const linkFor = (id) =>
-    Array.from(navLinks).find(function (link) {
-      return link.getAttribute("href") === "#" + id;
-    });
+  const rawPath = window.location.pathname.split("/").pop().toLowerCase();
+  const currentPath = rawPath === "" ? "index.html" : rawPath;
+  const PRODUCT_PAGES = ["water_softeners.html", "ro_water_purifiers.html", "uv_water_purifiers.html"];
 
-  const observer = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        const link = linkFor(entry.target.id);
-        if (!link) return;
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (l) { l.classList.remove("active"); });
-          link.classList.add("active");
-        }
-      });
-    },
-    { rootMargin: "-45% 0px -50% 0px" }
-  );
+  navLinks.forEach(function (link) {
+    const hrefRaw = (link.getAttribute("href") || "").trim();
+    if (!hrefRaw) return; // skip an empty href, if any
 
-  sections.forEach(function (section) { observer.observe(section); });
+    // Pure in-page anchors (href starts with "#", no file part) only ever
+    // mean "index.html" when the anchor is specifically #top (Home).
+    // Any other hash-only href (e.g. "#solutions" on the Products toggle)
+    // must NOT fall through and falsely match index.html.
+    if (hrefRaw.charAt(0) === "#") {
+      if (hrefRaw === "#top" && currentPath === "index.html") {
+        link.classList.add("active");
+      }
+      return;
+    }
+
+    const filePart = hrefRaw.split("#")[0];
+    const href = (filePart.split("/").pop() || "index.html").toLowerCase() || "index.html";
+
+    if (href === currentPath) link.classList.add("active");
+  });
+
+  // Product pages: the "Products" toggle's own href points at index.html,
+  // not the product page, so light it up explicitly here.
+  if (PRODUCT_PAGES.indexOf(currentPath) !== -1) {
+    const toggle = document.querySelector(".nav-dropdown .dropdown-toggle");
+    if (toggle) toggle.classList.add("active");
+  }
 }
 
 
