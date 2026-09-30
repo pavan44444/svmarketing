@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Services | SV Marketing — ZeroB Water Solutions</title>
+
+    <meta name="description"
+        content="SV Marketing provides ZeroB water softeners, RO water purifiers and UV water purification solutions across Bengaluru.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Your existing stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+       SERVICES PAGE
+       SV MARKETING — ZERO B
+       ========================================================= */
+
+        :root {
+            --service-navy: #1b3768;
+            --service-navy-dark: #132d59;
+            --service-blue: #2d69c4;
+            --service-blue-light: #eaf3ff;
+
+            --service-copper: #ef765d;
+            --service-copper-light: #fff0eb;
+
+            --service-white: #ffffff;
+            --service-bg: #f5f8fc;
+            --service-text: #17233b;
+            --service-muted: #647089;
+
+            --service-border: #dbe3ef;
+
+            --service-shadow:
+                0 18px 50px rgba(20, 50, 95, 0.10);
+
+            --service-shadow-hover:
+                0 25px 65px rgba(20, 50, 95, 0.18);
+        }
+
+
+        /* =========================================================
+       GLOBAL
+       ========================================================= */
+
+        .services-page {
+            background: var(--service-bg);
+            color: var(--service-text);
+        }
+
+        .services-page h1,
+        .services-page h2,
+        .services-page h3 {
+            font-family: "Fraunces", serif;
+        }
+
+        .services-page p {
+            font-family: "Work Sans", sans-serif;
+        }
+
+
+        /* =========================================================
+       HERO
+       ========================================================= */
+
+        .services-hero {
+            position: relative;
+            overflow: hidden;
+
+            min-height: 560px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 85% 20%,
+                    rgba(255, 255, 255, .14),
+                    transparent 30%),
+                radial-gradient(circle at 15% 90%,
+                    rgba(239, 118, 93, .12),
+                    transparent 30%),
+                linear-gradient(135deg,
+                    var(--service-navy-dark),
+                    var(--service-navy));
+
+            color: white;
+        }
+
+        .services-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -180px;
+            top: -180px;
+
+            border: 1px solid rgba(255, 255, 255, .12);
+
+            border-radius: 50%;
+        }
+
+        .services-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 320px;
+            height: 320px;
+
+            left: -160px;
+            bottom: -160px;
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            border-radius: 50%;
+        }
+
+        .services-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-hero-content {
+            max-width: 850px;
+        }
+
+        .services-kicker {
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            color: #ff9a82;
+
+            font-family: "Work Sans", sans-serif;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .services-hero h1 {
+            max-width: 850px;
+
+            margin: 0 0 22px;
+
+            font-size: clamp(46px, 7vw, 82px);
+
+            line-height: 1.02;
+
+            letter-spacing: -2px;
+
+            color: #ffffff;
+        }
+
+        .services-hero h1 span {
+            color: #ff9178;
+        }
+
+        .services-hero p {
+            max-width: 700px;
+
+            margin: 0 0 30px;
+
+            color: rgba(255, 255, 255, .82);
+
+            font-size: 18px;
+
+            line-height: 1.75;
+        }
+
+        .services-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .services-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding: 0 24px;
+
+            border-radius: 8px;
+
+            font-family: "Work Sans", sans-serif;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                color .25s ease,
+                border-color .25s ease;
+        }
+
+        .services-btn-primary {
+            background: var(--service-copper);
+            color: white;
+
+            border: 1px solid var(--service-copper);
+        }
+
+        .services-btn-primary:hover {
+            background: #ff876d;
+
+            transform: translateY(-2px);
+        }
+
+        .services-btn-outline {
+            color: white;
+
+            border: 1px solid rgba(255, 255, 255, .5);
+
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .services-btn-outline:hover {
+            background: white;
+            color: var(--service-navy);
+        }
+
+
+        /* =========================================================
+       INTRO
+       ========================================================= */
+
+        .services-intro {
+            padding: 90px 0 45px;
+
+            background: var(--service-bg);
+        }
+
+        .services-section-heading {
+            max-width: 760px;
+
+            margin: 0 auto 50px;
+
+            text-align: center;
+        }
+
+        .services-section-heading .eyebrow {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: var(--service-copper);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .services-section-heading h2 {
+            margin: 0 0 14px;
+
+            color: var(--service-navy);
+
+            font-size: clamp(32px, 4vw, 48px);
+
+            line-height: 1.15;
+        }
+
+        .services-section-heading p {
+            margin: 0;
+
+            color: var(--service-muted);
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+       SERVICE CARDS
+       ========================================================= */
+
+        .services-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 24px;
+        }
+
+        .service-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background: var(--service-white);
+
+            border: 1px solid var(--service-border);
+
+            border-radius: 20px;
+
+            box-shadow: var(--service-shadow);
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow: var(--service-shadow-hover);
+        }
+
+        .service-card-top {
+            height: 9px;
+
+            background: var(--service-blue);
+        }
+
+        .service-card:nth-child(2) .service-card-top {
+            background: var(--service-copper);
+        }
+
+        .service-card:nth-child(3) .service-card-top {
+            background: #4a91d8;
+        }
+
+        .service-card-body {
+            padding: 32px;
+        }
+
+        .service-icon {
+            width: 62px;
+            height: 62px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 22px;
+
+            border-radius: 16px;
+
+            background: var(--service-blue-light);
+
+            color: var(--service-blue);
+
+            font-size: 29px;
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: var(--service-copper-light);
+
+            color: var(--service-copper);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            background: #edf7ff;
+
+            color: #3784c9;
+        }
+
+        .service-card h3 {
+            margin: 0 0 12px;
+
+            color: var(--service-navy);
+
+            font-size: 27px;
+
+            line-height: 1.2;
+        }
+
+        .service-card-description {
+            min-height: 105px;
+
+            margin: 0 0 24px;
+
+            color: var(--service-muted);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .service-card-list {
+            list-style: none;
+
+            padding: 0;
+            margin: 0 0 28px;
+        }
+
+        .service-card-list li {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #edf1f6;
+
+            color: #43516b;
+
+            font-family: "Work Sans", sans-serif;
+
+            font-size: 14px;
+        }
+
+        .service-card-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-card-list li::before {
+            content: "✓";
+
+            flex-shrink: 0;
+
+            width: 20px;
+            height: 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 1px;
+
+            border-radius: 50%;
+
+            background: var(--service-blue-light);
+
+            color: var(--service-blue);
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .service-card:nth-child(2) .service-card-list li::before {
+            background: var(--service-copper-light);
+
+            color: var(--service-copper);
+        }
+
+        .service-card-link {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: var(--service-navy);
+
+            font-family: "Work Sans", sans-serif;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+        .service-card-link:hover {
+            color: var(--service-copper);
+        }
+
+
+        /* =========================================================
+       SERVICE DETAILS
+       ========================================================= */
+
+        .service-details {
+            padding: 100px 0;
+
+            background: white;
+        }
+
+        .service-detail {
+            display: grid;
+
+            grid-template-columns: .9fr 1.1fr;
+
+            gap: 65px;
+
+            align-items: center;
+
+            margin-bottom: 90px;
+        }
+
+        .service-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-detail.reverse {
+            grid-template-columns: 1.1fr .9fr;
+        }
+
+        .service-detail.reverse .service-detail-visual {
+            order: 2;
+        }
+
+        .service-detail.reverse .service-detail-content {
+            order: 1;
+        }
+
+        .service-detail-visual {
+            min-height: 350px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 24px;
+
+            background:
+                radial-gradient(circle at 30% 25%,
+                    rgba(255, 255, 255, .25),
+                    transparent 30%),
+                linear-gradient(145deg,
+                    var(--service-navy),
+                    #28599a);
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .service-detail:nth-child(2) .service-detail-visual {
+            background:
+                radial-gradient(circle at 70% 25%,
+                    rgba(255, 255, 255, .3),
+                    transparent 30%),
+                linear-gradient(145deg,
+                    #d95d49,
+                    var(--service-copper));
+        }
+
+        .service-detail:nth-child(3) .service-detail-visual {
+            background:
+                radial-gradient(circle at 40% 20%,
+                    rgba(255, 255, 255, .3),
+                    transparent 30%),
+                linear-gradient(145deg,
+                    #2f79b8,
+                    #58a9e2);
+        }
+
+        .service-detail-visual::before,
+        .service-detail-visual::after {
+            content: "";
+
+            position: absolute;
+
+            border: 1px solid rgba(255, 255, 255, .18);
+
+            border-radius: 50%;
+        }
+
+        .service-detail-visual::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .service-detail-visual::after {
+            width: 450px;
+            height: 450px;
+        }
+
+        .service-detail-icon {
+            position: relative;
+
+            z-index: 2;
+
+            width: 150px;
+            height: 150px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 35px;
+
+            background: rgba(255, 255, 255, .15);
+
+            border: 1px solid rgba(255, 255, 255, .3);
+
+            backdrop-filter: blur(12px);
+
+            color: white;
+
+            font-size: 70px;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, .18);
+        }
+
+        .service-detail-label {
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            color: var(--service-copper);
+
+            font-family: "Work Sans", sans-serif;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .service-detail-content h2 {
+            margin: 0 0 18px;
+
+            color: var(--service-navy);
+
+            font-size: clamp(32px, 4vw, 48px);
+
+            line-height: 1.1;
+        }
+
+        .service-detail-content>p {
+            margin: 0 0 22px;
+
+            color: var(--service-muted);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        .service-benefits {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 10px 20px;
+
+            margin: 0 0 25px;
+
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .service-benefits li {
+            position: relative;
+
+            padding-left: 22px;
+
+            color: #3d4b63;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .service-benefits li::before {
+            content: "✓";
+
+            position: absolute;
+
+            left: 0;
+
+            color: var(--service-copper);
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+       PROCESS
+       ========================================================= */
+
+        .service-process {
+            padding: 100px 0;
+
+            background: var(--service-bg);
+        }
+
+        .process-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .process-card {
+            position: relative;
+
+            padding: 28px 22px;
+
+            background: white;
+
+            border: 1px solid var(--service-border);
+
+            border-radius: 16px;
+        }
+
+        .process-number {
+            margin-bottom: 14px;
+
+            color: var(--service-copper);
+
+            font-family: "Work Sans", sans-serif;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .process-card h3 {
+            margin: 0 0 9px;
+
+            color: var(--service-navy);
+
+            font-size: 20px;
+        }
+
+        .process-card p {
+            margin: 0;
+
+            color: var(--service-muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+       CTA
+       ========================================================= */
+
+        .services-cta {
+            padding: 85px 0;
+        }
+
+        .services-cta-box {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 60px;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(circle at 90% 20%,
+                    rgba(255, 255, 255, .12),
+                    transparent 30%),
+                linear-gradient(135deg,
+                    var(--service-navy-dark),
+                    var(--service-navy));
+
+            color: white;
+        }
+
+        .services-cta-box h2 {
+            max-width: 650px;
+
+            margin: 0 0 14px;
+
+            color: white;
+
+            font-size: clamp(32px, 4vw, 50px);
+
+            line-height: 1.1;
+        }
+
+        .services-cta-box p {
+            max-width: 680px;
+
+            margin: 0 0 28px;
+
+            color: rgba(255, 255, 255, .78);
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+       MOBILE
+       ========================================================= */
+
+        @media (max-width: 950px) {
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-detail,
+            .service-detail.reverse {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+            .service-detail.reverse .service-detail-visual {
+                order: 1;
+            }
+
+            .service-detail.reverse .service-detail-content {
+                order: 2;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .services-hero {
+                min-height: 500px;
+
+                padding: 80px 0;
+            }
+
+            .services-hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .services-hero p {
+                font-size: 16px;
+            }
+
+            .services-intro,
+            .service-details,
+            .service-process {
+                padding: 70px 0;
+            }
+
+            .service-detail {
+                margin-bottom: 65px;
+            }
+
+            .service-detail-visual {
+                min-height: 280px;
+            }
+
+            .service-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-cta-box {
+                padding: 38px 25px;
+            }
+
+            .services-hero-actions {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .services-btn {
+                width: 100%;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body class="services-page">
+
+
+    <!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+    <header class="header">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                SV Marketing
+            </a>
+
+
+            <nav class="navbar">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <div class="nav-dropdown">
+
+                    <a href="solutions.html" class="dropdown-toggle">
+                        Products
+                        <span class="dropdown-arrow">▾</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+
+                        <a href="uv_water_purifiers.html">
+                            UV Water Purifiers
+                        </a>
+
+                        <a href="ro_water_purifiers.html">
+                            RO Water Purifiers
+                        </a>
+
+                        <a href="water_softeners.html">
+                            Water Softeners
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <a href="services.html">
+                    Services
+                </a>
+
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+
+                <a href="faq.html">
+                    FAQ
+                </a>
+
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <div class="header-actions">
+
+                <button class="theme-toggle" aria-label="Switch theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+
+
+                <a href="https://wa.me/919902340759" class="nav-whatsapp" target="_blank" rel="noopener">
+                    WhatsApp
+                </a>
+                <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================================================
+     HERO
+     ========================================================= -->
+
+        <section class="services-hero">
+
+            <div class="container">
+
+                <div class="services-hero-content">
+
+                    <span class="services-kicker">
+                        SV Marketing · ZeroB Solutions
+                    </span>
+
+
+                    <h1>
+                        Water solutions
+                        <span>built around your needs.</span>
+                    </h1>
+
+
+                    <p>
+                        From hard-water protection to drinking-water purification,
+                        we provide ZeroB solutions designed around your water quality,
+                        property and everyday usage.
+                    </p>
+
+
+                    <div class="services-hero-actions">
+
+                        <a href="#services" class="services-btn services-btn-primary">
+                            Explore Services →
+                        </a>
+
+
+                        <a href="https://wa.me/919902340759?text=Hello%20SV%20Marketing%2C%20I%20want%20to%20know%20about%20your%20water%20solutions."
+                            target="_blank" rel="noopener" class="services-btn services-btn-outline">
+                            Talk on WhatsApp
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================================
+     INTRO
+     ========================================================= -->
+
+        <section class="services-intro" id="services">
+
+            <div class="container">
+
+                <div class="services-section-heading">
+
+                    <span class="eyebrow">
+                        Our Services
+                    </span>
+
+                    <h2>
+                        One water problem.
+                        The right treatment.
+                    </h2>
+
+                    <p>
+                        Every water source is different. We help identify the
+                        appropriate ZeroB technology based on your water quality,
+                        usage and installation requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+
+                    <!-- UV -->
+
+                    <article class="service-card">
+
+                        <div class="service-card-top"></div>
+
+                        <div class="service-card-body">
+
+                            <div class="service-icon">
+                                ☀
+                            </div>
+
+                            <h3>
+                                UV Water Purification
+                            </h3>
+
+                            <p class="service-card-description">
+                                UV-based purification solutions for drinking-water
+                                applications, including compact UV and UV + UF systems
+                                for suitable water sources.
+                            </p>
+
+
+                            <ul class="service-card-list">
+
+                                <li>
+                                    UV purification technology
+                                </li>
+
+                                <li>
+                                    UV + UF options
+                                </li>
+
+                                <li>
+                                    Compact household solutions
+                                </li>
+
+                                <li>
+                                    Wall-mountable options
+                                </li>
+
+                            </ul>
+
+
+                            <a href="uv_water_purifiers.html" class="service-card-link">
+                                Explore UV Purifiers →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- RO -->
+
+                    <article class="service-card">
+
+                        <div class="service-card-top"></div>
+
+                        <div class="service-card-body">
+
+                            <div class="service-icon">
+                                💧
+                            </div>
+
+                            <h3>
+                                RO Water Purification
+                            </h3>
+
+                            <p class="service-card-description">
+                                Reverse osmosis solutions designed for drinking water
+                                where dissolved solids and water quality require
+                                membrane-based treatment.
+                            </p>
+
+
+                            <ul class="service-card-list">
+
+                                <li>
+                                    Reverse Osmosis technology
+                                </li>
+
+                                <li>
+                                    High-TDS water applications
+                                </li>
+
+                                <li>
+                                    Drinking-water purification
+                                </li>
+
+                                <li>
+                                    Household purifier solutions
+                                </li>
+
+                            </ul>
+
+
+                            <a href="ro_water_purifiers.html" class="service-card-link">
+                                Explore RO Purifiers →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- SOFTENER -->
+
+                    <article class="service-card">
+
+                        <div class="service-card-top"></div>
+
+                        <div class="service-card-body">
+
+                            <div class="service-icon">
+                                🫧
+                            </div>
+
+                            <h3>
+                                Water Softening
+                            </h3>
+
+                            <p class="service-card-description">
+                                Hard-water treatment using ion-exchange technology
+                                to help protect bathrooms, appliances, plumbing and
+                                household water systems.
+                            </p>
+
+
+                            <ul class="service-card-list">
+
+                                <li>
+                                    Ion-exchange technology
+                                </li>
+
+                                <li>
+                                    Bathroom softening
+                                </li>
+
+                                <li>
+                                    Appliance protection
+                                </li>
+
+                                <li>
+                                    Automatic softener options
+                                </li>
+
+                            </ul>
+
+
+                            <a href="water_softeners.html" class="service-card-link">
+                                Explore Water Softeners →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================================
+     DETAILED SERVICES
+     ========================================================= -->
+
+        <section class="service-details">
+
+            <div class="container">
+
+                <!-- UV -->
+                <article class="service-detail">
+
+                    <div class="service-detail-visual">
+                        <img src="images/services/uv.jpg" alt="ZeroB UV Water Purifier">
+                    </div>
+
+
+                    <div class="service-detail-content">
+
+                        <span class="service-detail-label">
+                            Service 01 · Purification
+                        </span>
+
+                        <h2>
+                            UV Water Purification
+                        </h2>
+
+                        <p>
+                            UV purification is designed for drinking-water
+                            applications where microbial protection is required.
+                            ZeroB's range includes UV and UV + UF configurations,
+                            depending on the model.
+                        </p>
+
+
+                        <ul class="service-benefits">
+
+                            <li>
+                                UV-based treatment
+                            </li>
+
+                            <li>
+                                UV + UF configurations
+                            </li>
+
+                            <li>
+                                Compact designs
+                            </li>
+
+                            <li>
+                                Suitable drinking-water applications
+                            </li>
+
+                            <li>
+                                Wall-mountable options
+                            </li>
+
+                            <li>
+                                Household-focused solutions
+                            </li>
+
+                        </ul>
+
+
+                        <a href="uv_water_purifiers.html" class="services-btn services-btn-primary">
+                            View UV Solutions →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- RO -->
+                <article class="service-detail reverse">
+
+                    <div class="service-detail-visual">
+                        <img src="images/services/ro.jpg" alt="ZeroB RO Water Purifier">
+                    </div>
+
+
+                    <div class="service-detail-content">
+
+                        <span class="service-detail-label">
+                            Service 02 · Purification
+                        </span>
+
+                        <h2>
+                            RO Water Purification
+                        </h2>
+
+                        <p>
+                            Reverse osmosis uses a fine membrane to reduce dissolved
+                            solids from water. It is commonly considered when drinking
+                            water has high dissolved-solids levels.
+                        </p>
+
+
+                        <ul class="service-benefits">
+
+                            <li>
+                                Reverse osmosis membrane
+                            </li>
+
+                            <li>
+                                High-TDS applications
+                            </li>
+
+                            <li>
+                                Drinking-water treatment
+                            </li>
+
+                            <li>
+                                Multi-stage purification options
+                            </li>
+
+                            <li>
+                                Household applications
+                            </li>
+
+                            <li>
+                                Compact purifier designs
+                            </li>
+
+                        </ul>
+
+
+                        <a href="ro_water_purifiers.html" class="services-btn services-btn-primary">
+                            View RO Solutions →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SOFTENER -->
+                <article class="service-detail">
+
+                    <div class="service-detail-visual">
+                        <img src="images/services/softener.jpg" alt="ZeroB Water Softener">
+                    </div>
+
+
+                    <div class="service-detail-content">
+
+                        <span class="service-detail-label">
+                            Service 03 · Hard Water Treatment
+                        </span>
+
+                        <h2>
+                            Water Softening
+                        </h2>
+
+                        <p>
+                            Water softeners treat hardness-causing calcium and
+                            magnesium through ion-exchange technology. They can
+                            help reduce scaling effects in bathrooms, geysers,
+                            washing machines and plumbing.
+                        </p>
+
+
+                        <ul class="service-benefits">
+
+                            <li>
+                                Ion-exchange resin
+                            </li>
+
+                            <li>
+                                Hard-water treatment
+                            </li>
+
+                            <li>
+                                Bathroom applications
+                            </li>
+
+                            <li>
+                                Geyser protection
+                            </li>
+
+                            <li>
+                                Washing-machine applications
+                            </li>
+
+                            <li>
+                                Automatic softener options
+                            </li>
+
+                        </ul>
+
+
+                        <a href="water_softeners.html" class="services-btn services-btn-primary">
+                            View Softener Solutions →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================================
+     HOW WE WORK
+     ========================================================= -->
+
+        <section class="service-process">
+
+            <div class="container">
+
+                <div class="services-section-heading">
+
+                    <span class="eyebrow">
+                        Our Process
+                    </span>
+
+                    <h2>
+                        We start with your water.
+                    </h2>
+
+                    <p>
+                        Instead of selecting a system first, we look at the
+                        water source, application and requirement before
+                        recommending the appropriate solution.
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+
+                    <article class="process-card">
+
+                        <div class="process-number">
+                            STEP 01
+                        </div>
+
+                        <h3>
+                            Understand
+                        </h3>
+
+                        <p>
+                            We understand your property, water source and the
+                            problem you are experiencing.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process-card">
+
+                        <div class="process-number">
+                            STEP 02
+                        </div>
+
+                        <h3>
+                            Test
+                        </h3>
+
+                        <p>
+                            Water quality parameters such as hardness and TDS
+                            help determine the appropriate treatment category.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process-card">
+
+                        <div class="process-number">
+                            STEP 03
+                        </div>
+
+                        <h3>
+                            Recommend
+                        </h3>
+
+                        <p>
+                            We identify the ZeroB solution that matches your
+                            water condition and expected usage.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process-card">
+
+                        <div class="process-number">
+                            STEP 04
+                        </div>
+
+                        <h3>
+                            Install & Support
+                        </h3>
+
+                        <p>
+                            We coordinate installation and help you with the
+                            next steps for operating the selected system.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================================
+     CTA
+     ========================================================= -->
+
+        <section class="services-cta">
+
+            <div class="container">
+
+                <div class="services-cta-box">
+
+                    <h2>
+                        Not sure which service you need?
+                    </h2>
+
+                    <p>
+                        Tell us your water source, property type and the problem
+                        you're facing. We'll help you identify whether you need
+                        a softener, RO purifier or UV purification solution.
+                    </p>
+
+
+                    <div class="services-hero-actions">
+
+                        <a href="https://wa.me/919902340759?text=Hello%20SV%20Marketing%2C%20I%20need%20help%20choosing%20a%20ZeroB%20water%20solution."
+                            class="services-btn services-btn-primary" target="_blank" rel="noopener">
+                            WhatsApp Us →
+                        </a>
+
+
+                        <a href="contact.html" class="services-btn services-btn-outline">
+                            Contact Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-column">
+
+                <h3>
+                    SV Marketing
+                </h3>
+
+                <p>
+                    ZeroB water softener and water purifier solutions
+                    across Bengaluru.
+                </p>
+
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="index.html#solutions">Products</a>
+                <div class="footer-sub">
+                    <a href="uv_water_purifiers.html">UV Water Purifiers</a>
+                    <a href="ro_water_purifiers.html">RO Water Purifiers</a>
+                    <a href="water_softeners.html">Water Softeners</a>
+                </div>
+                <a href="services.html">Services</a>
+                <a href="about.html">About us</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-column">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    Toll Junction, Building No. 63/1, NICE Road,
+                    Magadi Main Road, Near HP Petrol Pump,
+                    Chikkagollarahatti, Kachohalli,
+                    Karnataka – 562162
+                </p>
+
+                <a href="tel:+919902340759">
+                    +91 99023 40759
+                </a>
+
+                <a href="https://wa.me/919902340759" target="_blank" rel="noopener">
+                    WhatsApp us
+                </a>
+
+            </div>
+            <div class="footer-column">
+                <h3>Social Media</h3>
+                <a href="https://www.facebook.com/svmarketingagency/">facebook</a>
+                <a href="https://www.youtube.com/@svmarketing740">youtube</a>
+
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © <span class="current-year"></span>
+                SV Marketing. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+    <script>
+        const yearElement = document.querySelector(".current-year");
+
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+    </script>
+
+
+</body>
+
+</html>
