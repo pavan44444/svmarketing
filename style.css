@@ -2714,6 +2714,10 @@ textarea:focus-visible {
   display: none;
 }
 
+.btn btn-secondary {
+  color: white;
+  background-color: #25D366;
+}
 
 /* ---- Header "Products" dropdown on mobile ----
    The desktop dropdown is hover-only and the mobile menu closes on any
@@ -3739,4 +3743,213 @@ body.dark-theme .product-hero-overlay {
 
 .footer-column .footer-sub a:hover {
   color: #fff;
+}
+
+/* ===== Contact address: bouncing pin + WhatsApp button ===== */
+.address-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.address-pin {
+  flex-shrink: 0;
+  display: inline-flex;
+  color: var(--copper);
+  animation: pinBounce 1.4s ease-in-out infinite;
+}
+
+/* Soft pulse on the ground under the pin */
+.address-pin::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 6px;
+  margin: 26px 0 0 4px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.18);
+  animation: pinShadow 1.4s ease-in-out infinite;
+}
+
+@keyframes pinBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes pinShadow {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: scale(0.6);
+    opacity: 0.15;
+  }
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .address-pin,
+  .address-pin::after {
+    animation: none;
+  }
+}
+
+/* ===== Footer: WhatsApp button with icon ===== */
+.footer-column a.footer-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Footer pin: keep the address text aligned and the pin a bit smaller */
+.footer-column .address-row {
+  margin-bottom: 12px;
+}
+
+.footer-column .address-row p {
+  margin-bottom: 0;
+}
+
+/* ===== Contact form: no hover effect on submit button ===== */
+.contact-form .form-submit:hover {
+  transform: none;
+  background: var(--water-deep);
+  border-color: var(--water-deep);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== About CTA: both buttons WhatsApp green ===== */
+.about-cta-buttons .btn,
+.about-cta-buttons .btn-primary,
+.about-cta-buttons .btn-secondary {
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff;
+  box-shadow: none;
+}
+
+.about-cta-buttons .btn:hover,
+.about-cta-buttons .btn-primary:hover,
+.about-cta-buttons .btn-secondary:hover {
+  background: #1EBE5A;
+  border-color: #1EBE5A;
+  color: #fff;
+}
+
+/* =========================================================
+   SERVICES PAGE: tighter, cleaner spacing
+   ========================================================= */
+
+.services-page .section {
+  padding: 56px 0;
+}
+
+.services-page .section-heading {
+  margin-bottom: 32px;
+}
+
+.services-page .section-heading h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.services-page .product-hero {
+  padding: 40px 0 48px;
+}
+
+.services-page .product-cta {
+  padding: 48px 0;
+}
+
+/* Alternate backgrounds so each section reads as its own block */
+.services-page #process,
+.services-page #by-property {
+  background: var(--surface);
+}
+
+.services-page #site-needs,
+.services-page #after-install {
+  background: var(--surface-sunken);
+}
+
+.services-page .product-cta {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+  .services-page .section {
+    padding: 40px 0;
+  }
+
+  .services-page .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .services-page .product-hero {
+    padding: 32px 0 40px;
+  }
+}
+
+/* ===== Footer: icon + text alignment (email & WhatsApp) ===== */
+.footer .footer-column a.footer-email,
+.footer .footer-column a.footer-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
+.footer .footer-column a.footer-email svg,
+.footer .footer-column a.footer-whatsapp svg {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Contact form: no hand cursor on the submit button ===== */
+.contact-form .form-submit,
+.contact-form .form-submit:hover {
+  cursor: default;
+}
+
+/* ===== Custom cursor only: hide the system cursor everywhere (mouse devices) ===== */
+@media (pointer: fine) {
+
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
 }
