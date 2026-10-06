@@ -3953,3 +3953,8 @@ body.dark-theme .product-hero-overlay {
     cursor: none !important;
   }
 }
+.logo img {
+  height: 48px;   /* adjust to your navbar height */
+  width: auto;
+  display: block;
+}
