@@ -4815,3 +4815,151 @@ body.dark-theme .btn-primary:hover {
     padding-top: 10px;
   }
 }
+
+.product-hero {
+  min-height: 520px;
+}
+
+
+
+/* About Quality Section */
+.about-quality {
+  padding: 70px 0;
+  background: #111c30;
+  color: #e8edf7;
+}
+
+.about-quality-content {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* Centered heading */
+.about-quality-content h2 {
+  text-align: center;
+  font-size: clamp(28px, 3.5vw, 42px);
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 0 0 45px;
+  color: #ffffff;
+}
+
+.about-quality-content h2 span {
+  background: #0848c7;
+  color: #ffffff;
+  padding: 2px 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Paragraph content */
+.about-quality-text {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.about-quality-text p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #d4dceb;
+  margin: 0 0 22px;
+  text-align: left;
+}
+
+.about-quality-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .about-quality {
+    padding: 45px 0;
+  }
+
+  .about-quality-content h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+
+  .about-quality-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+}
+
+/* ===== About page: consistent centred layout ===== */
+.about-brands-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-quality-content,
+.about-customer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-quality-content h2 {
+  margin: 0 0 24px;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.15;
+}
+
+.about-quality-text p,
+.about-customer-content p {
+  margin: 0 auto 18px;
+  line-height: 1.8;
+}
+
+/* Quote keeps its blue bar but sits centred, text left inside it */
+.about-customer-content blockquote {
+  max-width: 800px;
+  margin: 40px auto 0;
+  text-align: left;
+}
+
+/* Blue border on the right side of the ZeroB product box */
+.brands-content {
+  border-right: 4px solid var(--water);
+}
+
+/* Heading accent words: blue text only, no background box */
+.about-content h2 span,
+.about-products h2 span,
+.about-brands h2 span,
+.about-quality h2 span,
+.about-customer h2 span,
+.about-stats h2 span,
+.about-cta h2 span {
+  background: none;
+  padding: 0;
+  color: var(--water);
+}
+
+/* ===== About stats: alternating blue / orange cards ===== */
+.about-stat {
+  color: #FFFFFF;
+}
+
+.about-stat:nth-child(odd) {
+  background: #2F6FED;
+  /* blue */
+}
+
+.about-stat:nth-child(even) {
+  background: #FF6B4A;
+  /* orange (WhatsApp button colour) */
+}
+
+.about-stat strong,
+.about-stat span {
+  color: #FFFFFF;
+}
+
+.about-stat span {
+  opacity: 0.92;
+  /* was 0.7, too faint on a coloured card */
+}
