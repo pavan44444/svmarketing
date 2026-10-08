@@ -41,9 +41,8 @@ html {
   --shadow-sm: 0 6px 18px rgba(16, 26, 46, 0.08);
   --shadow-md: 0 18px 40px rgba(16, 26, 46, 0.14);
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Work Sans", Arial, sans-serif;
-
+  --font-display: "Roboto", Arial, sans-serif;
+  --font-body: "Roboto", Arial, sans-serif;
   --transition: 0.25s ease;
 }
 
@@ -124,7 +123,7 @@ ol {
 }
 
 .section {
-  padding: 96px 0;
+  padding: 30px 0;
 }
 
 .section-heading {
@@ -1008,8 +1007,10 @@ body.dark-theme .banner-overlay {
   position: relative;
   text-align: center;
   padding: 0 12px;
-  opacity: 0;
-  transform: translateY(14px);
+
+  opacity: 1;
+  transform: none;
+
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -1617,7 +1618,14 @@ body.dark-theme .banner-overlay {
    ========================================================= */
 
 .faq-list {
-  max-width: 1080px;
+  width: 94%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.faq .container {
+  max-width: 1280px;
+  /* only matters if .faq-list sits inside .container (capped at 1180px) */
 }
 
 /* Each column is its own stack, so opening an item never stretches the other column */
@@ -1650,6 +1658,8 @@ body.dark-theme .banner-overlay {
   font-weight: 600;
   cursor: pointer;
   list-style: none;
+  padding: 22px 56px 22px 24px;
+  /* was: 22px 40px 22px 0 */
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -1666,6 +1676,7 @@ body.dark-theme .banner-overlay {
   font-size: 22px;
   font-weight: 400;
   transition: transform 0.3s ease;
+  right: 22px;
 }
 
 .faq-item[open] summary::after {
@@ -1673,7 +1684,7 @@ body.dark-theme .banner-overlay {
 }
 
 .faq-item p {
-  padding: 0 40px 22px 0;
+  padding: 0 56px 22px 24px;
   color: var(--ink-soft);
   font-size: 14.5px;
   line-height: 1.75;
@@ -1773,7 +1784,7 @@ body.dark-theme .banner-overlay {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 45px;
 }
 
@@ -2184,7 +2195,7 @@ textarea:focus-visible {
 
 @media (max-width: 600px) {
   .section {
-    padding: 64px 0;
+    padding: 10px 0;
   }
 
   .problem-list {
@@ -3167,7 +3178,7 @@ body.dark-theme .product-hero-overlay {
       rgba(5, 15, 30, 0.92),
       rgba(5, 15, 30, 0.55),
       rgba(5, 15, 30, 0.25)),
-    url("commercial-water-solutions.jpg") center / cover no-repeat;
+    url("water-purifier.jpg") center / cover no-repeat;
 }
 
 .about-hero-content {
@@ -3309,7 +3320,7 @@ body.dark-theme .product-hero-overlay {
    ========================= */
 
 .about-products {
-  padding: 100px 0;
+  padding: 30px 0;
 }
 
 .about-product-list {
@@ -3348,7 +3359,7 @@ body.dark-theme .product-hero-overlay {
    ========================= */
 
 .about-brands {
-  padding: 100px 0;
+  padding: 64px 0;
 }
 
 .brands-content {
@@ -3372,7 +3383,7 @@ body.dark-theme .product-hero-overlay {
    ========================= */
 
 .about-quality {
-  padding: 110px 0;
+  padding: 64px 0;
 }
 
 .about-quality-grid {
@@ -3387,7 +3398,7 @@ body.dark-theme .product-hero-overlay {
    ========================= */
 
 .about-customer {
-  padding: 100px 0;
+  padding: 30px 0;
 }
 
 .about-customer-content {
@@ -3411,7 +3422,7 @@ body.dark-theme .product-hero-overlay {
    ========================= */
 
 .about-stats {
-  padding: 100px 0;
+  padding: 30px 0;
 }
 
 .about-stats-grid {
@@ -3449,7 +3460,7 @@ body.dark-theme .product-hero-overlay {
    ========================= */
 
 .about-cta {
-  padding: 100px 0;
+  padding: 30px 0;
 }
 
 .about-cta-inner {
@@ -3522,7 +3533,7 @@ body.dark-theme .product-hero-overlay {
   .about-customer,
   .about-stats,
   .about-cta {
-    padding: 70px 0;
+    padding: 10px 0;
   }
 
   .about-image img {
@@ -3575,7 +3586,7 @@ body.dark-theme .product-hero-overlay {
       rgba(5, 15, 30, 0.92),
       rgba(5, 15, 30, 0.55),
       rgba(5, 15, 30, 0.25)),
-    url("commercial-water-solutions.jpg") center / cover no-repeat;
+    url("water-purifier.jpg") center / cover no-repeat;
 }
 
 /* .about-hero-content {
@@ -3870,7 +3881,7 @@ body.dark-theme .product-hero-overlay {
    ========================================================= */
 
 .services-page .section {
-  padding: 56px 0;
+  padding: 26px 0;
 }
 
 .services-page .section-heading {
@@ -3953,8 +3964,854 @@ body.dark-theme .product-hero-overlay {
     cursor: none !important;
   }
 }
+
 .logo img {
-  height: 48px;   /* adjust to your navbar height */
+  height: 48px;
+  /* adjust to your navbar height */
   width: auto;
   display: block;
+}
+
+/* =========================================================
+   SV MARKETING HEADER
+   ========================================================= */
+
+/* -------------------------
+   LIGHT MODE
+   ------------------------- */
+
+.header {
+  background: #172033;
+  border-bottom: 1px solid #2F3D55;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Logo */
+.header .logo {
+  color: #FFFFFF;
+}
+
+/* Navigation */
+.header .navbar>a,
+.header .navbar .dropdown-toggle {
+  color: #F1F5FC;
+}
+
+/* Navigation hover */
+.header .navbar>a:hover,
+.header .navbar .dropdown-toggle:hover {
+  color: #8FB8FF;
+}
+
+/* Active page */
+.header .navbar>a.active,
+.header .navbar .dropdown-toggle.active {
+  color: #FFFFFF;
+}
+
+/* Active underline */
+.header .navbar>a.active::after,
+.header .navbar .dropdown-toggle.active::after {
+  background: #FF6B4A;
+}
+
+/* Products arrow */
+.header .dropdown-arrow {
+  color: #AFC0D9;
+}
+
+
+/* -------------------------
+   SEARCH BUTTON
+   ------------------------- */
+
+.header .search-toggle {
+  background: #202C42;
+  border-color: #3B4B65;
+  color: #F1F5FC;
+}
+
+.header .search-toggle:hover {
+  background: #293850;
+  color: #8FB8FF;
+}
+
+
+/* -------------------------
+   THEME BUTTON
+   ------------------------- */
+
+.header .theme-toggle {
+  background: #202C42;
+  border-color: #3B4B65;
+  color: #FFFFFF;
+}
+
+
+/* -------------------------
+   WHATSAPP
+   ------------------------- */
+
+.header .nav-whatsapp {
+  color: #FFFFFF;
+}
+
+
+/* -------------------------
+   PRODUCTS DROPDOWN
+   ------------------------- */
+
+.header .dropdown-menu {
+  background: #202C42;
+  border: 1px solid #3B4B65;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.header .dropdown-menu a {
+  color: #E9EFF8;
+}
+
+.header .dropdown-menu a:hover {
+  background: #172033;
+  color: #8FB8FF;
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+body.dark-theme .header {
+  background: #26344A;
+  border-bottom: 1px solid #40526D;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Dark mode navigation */
+body.dark-theme .header .navbar>a,
+body.dark-theme .header .navbar .dropdown-toggle {
+  color: #F4F7FC;
+}
+
+body.dark-theme .header .navbar>a:hover,
+body.dark-theme .header .navbar .dropdown-toggle:hover {
+  color: #A9C8FF;
+}
+
+/* Dark mode dropdown */
+body.dark-theme .header .dropdown-menu {
+  background: #303F56;
+  border-color: #4A5C77;
+}
+
+body.dark-theme .header .dropdown-menu a {
+  color: #F1F5FC;
+}
+
+body.dark-theme .header .dropdown-menu a:hover {
+  background: #26344A;
+  color: #A9C8FF;
+}
+
+/* Dark mode buttons */
+body.dark-theme .header .search-toggle,
+body.dark-theme .header .theme-toggle {
+  background: #303F56;
+  border-color: #4A5C77;
+  color: #FFFFFF;
+}
+
+/* =========================================================
+   CONTACT SECTION — EQUAL LEFT / RIGHT SPACING
+   ========================================================= */
+
+.contact .contact-grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding-left: 40px;
+  padding-right: 40px;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 56px;
+  align-items: start;
+}
+
+
+/* Left side */
+.contact-copy {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Right form */
+.contact-form {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
+/* Keep both sides visually balanced */
+.contact-copy h2,
+.contact-copy>p,
+.contact-direct,
+.contact-address,
+.contact-map {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .contact .contact-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .contact .contact-grid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* =========================================================
+   FLOATING CONTACT BUTTONS
+   Call Us - Bottom Left
+   WhatsApp - Bottom Right
+   ========================================================= */
+
+.floating-contact {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  height: 48px;
+  padding: 0 18px;
+
+  background: #172033;
+  color: #ffffff;
+
+  border: 1px solid #33445f;
+  border-radius: 12px;
+
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+
+  z-index: 9998;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.floating-contact:hover {
+  transform: translateY(-3px);
+
+  background: #202e45;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
+  color: #ffffff;
+}
+
+.floating-contact svg {
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   WHATSAPP — BOTTOM RIGHT
+   ========================================================= */
+
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  height: 48px;
+  padding: 0 18px;
+
+  background: #25D366;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 12px;
+
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+
+  z-index: 9998;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px);
+
+  background: #20bd5a;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
+  color: #ffffff;
+}
+
+.floating-whatsapp svg {
+  width: 21px;
+  height: 21px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .floating-contact,
+  .floating-whatsapp {
+    bottom: 16px;
+
+    height: 46px;
+    padding: 0 14px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+  }
+
+  .floating-contact {
+    left: 14px;
+  }
+
+  .floating-whatsapp {
+    right: 14px;
+  }
+
+  .floating-contact svg,
+  .floating-whatsapp svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+.scroll-top {
+  bottom: 85px;
+}
+
+/* =========================================================
+   ABOUT — BRANDS & QUALITY
+   ========================================================= */
+
+.about-brands {
+  padding: 55px 0 65px;
+  background: transparent;
+}
+
+.about-brands-content {
+  max-width: 950px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-brands-content p {
+  margin: 0 auto 20px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.about-brands-content p:last-child {
+  margin-bottom: 0;
+}
+
+.about-brands-content strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+
+/* Dark mode */
+body.dark-theme .about-brands-content p {
+  color: #B8C3D6;
+}
+
+body.dark-theme .about-brands-content strong {
+  color: #FFFFFF;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+  .about-brands {
+    padding: 40px 0 50px;
+  }
+
+  .about-brands-content {
+    padding: 0 20px;
+  }
+
+  .about-brands-content p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+
+/* ================= SOLUTION FINDER — WIDER CARD ================= */
+
+.finder .container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.finder-tool {
+  width: 100%;
+  max-width: 900px;
+  /* Increase the card width */
+  margin: 40px auto 0;
+  box-sizing: border-box;
+}
+
+/* Make the question options use the available space */
+.finder-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Responsive layout for mobile screens */
+@media (max-width: 768px) {
+  .finder .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .finder-tool {
+    max-width: 100%;
+    padding: 28px 18px;
+  }
+
+  .finder-options {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .finder-option {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
+/* =========================================
+   SV MARKETING — HIGH-CONTRAST SECTION COLORS
+   Add at the bottom of style.css
+========================================= */
+
+/* 1. Customer Journey — pure white */
+.journey {
+  background-color: #FFFFFF;
+  color: #172033;
+}
+
+/* 2. Solutions — clearly visible pale blue */
+.solutions {
+  background-color: #DCE8F5;
+  color: #172033;
+}
+
+/* 3. Solution Finder — deep navy */
+.finder {
+  background-color: #24344D;
+  color: #FFFFFF;
+}
+
+/* Finder heading and description */
+.finder .section-heading h2,
+.finder .section-heading p {
+  color: #FFFFFF;
+}
+
+/* Finder question card */
+.finder-tool {
+  background-color: #132238;
+  color: #FFFFFF;
+}
+
+/* Finder question headings */
+.finder-tool h3 {
+  color: #FFFFFF;
+}
+
+/* Finder options */
+.finder-option {
+  background-color: #0D1728;
+  color: #FFFFFF;
+  border-color: #607797;
+}
+
+.finder-option:hover,
+.finder-option:focus-visible {
+  background-color: #344B6B;
+  border-color: #F4C95D;
+}
+
+/* 4. Hard Water Problems — warm cream */
+.problems {
+  background-color: #F3E8D7;
+  color: #172033;
+}
+
+/* 5. Why Choose Us — cool grey */
+.why-us {
+  background-color: #E2E8F0;
+  color: #172033;
+}
+
+/* 6. FAQ — white for a clean reading experience */
+.faq {
+  background-color: #FFFFFF;
+  color: #172033;
+}
+
+/* FAQ cards remain visually distinct */
+.faq .faq-item {
+  background-color: #F1F5F9;
+  border-color: #CBD5E1;
+}
+
+/* 7. Contact — midnight navy */
+.contact {
+  background-color: #132238;
+  color: #FFFFFF;
+}
+
+/* Contact text */
+.contact .contact-copy h2,
+.contact .contact-copy p,
+.contact .contact-line,
+.contact .contact-address p,
+.contact .contact-address a {
+  color: #FFFFFF;
+}
+
+/* Contact form — white card against dark background */
+.contact-form {
+  background-color: #FFFFFF;
+  color: #172033;
+}
+
+/* Footer — retain a dark branded finish */
+.footer {
+  background-color: #0B1220;
+  color: #FFFFFF;
+}
+
+/* ==========================================
+   LIGHT MODE — SECTION TEXT CONTRAST FIX
+   ========================================== */
+
+html[data-theme="light"] .journey,
+html[data-theme="light"] .solutions,
+html[data-theme="light"] .problems,
+html[data-theme="light"] .why-us,
+html[data-theme="light"] .faq {
+  color: #172033;
+}
+
+/* Section headings */
+html[data-theme="light"] .journey .section-heading h2,
+html[data-theme="light"] .solutions .section-heading h2,
+html[data-theme="light"] .problems .section-heading h2,
+html[data-theme="light"] .faq .section-heading h2 {
+  color: #14243A;
+}
+
+/* Section descriptions */
+html[data-theme="light"] .journey .section-heading p,
+html[data-theme="light"] .solutions .section-heading p,
+html[data-theme="light"] .problems .section-heading p,
+html[data-theme="light"] .faq .section-heading p {
+  color: #46566D;
+}
+
+/* Solutions content */
+html[data-theme="light"] .solution-copy h3 {
+  color: #14243A;
+}
+
+html[data-theme="light"] .solution-copy p,
+html[data-theme="light"] .solution-list li {
+  color: #334155;
+}
+
+/* Customer journey */
+html[data-theme="light"] .journey-step h3 {
+  color: #14243A;
+}
+
+html[data-theme="light"] .journey-step p {
+  color: #46566D;
+}
+
+/* Hard water problems */
+html[data-theme="light"] .problem-item h3 {
+  color: #14243A;
+}
+
+html[data-theme="light"] .problem-item p {
+  color: #334155;
+}
+
+/* Why choose us */
+html[data-theme="light"] .why-us-copy h2 {
+  color: #14243A;
+}
+
+html[data-theme="light"] .why-us-copy p,
+html[data-theme="light"] .why-us-copy li {
+  color: #334155;
+}
+
+/* FAQ text */
+html[data-theme="light"] .faq-item summary {
+  color: #14243A;
+}
+
+html[data-theme="light"] .faq-item p {
+  color: #334155;
+}
+
+/* =========================================================
+   SECTION COLORS — theme-aware (light + dark)
+   Text colours come from --ink / --ink-soft, which already flip.
+   ========================================================= */
+
+:root {
+  --sec-journey: #FFFFFF;
+  --sec-solutions: #DCE8F5;
+  --sec-problems: #F3E8D7;
+  --sec-why: #E2E8F0;
+  --sec-faq: #FFFFFF;
+  --sec-faq-item: #F1F5F9;
+  --sec-faq-line: #CBD5E1;
+}
+
+body.dark-theme {
+  --sec-journey: #0A1220;
+  --sec-solutions: #101C31;
+  --sec-problems: #14223A;
+  --sec-why: #0E1728;
+  --sec-faq: #0A1220;
+  --sec-faq-item: #121D33;
+  --sec-faq-line: #2E3E60;
+}
+
+.journey {
+  background-color: var(--sec-journey);
+}
+
+.solutions {
+  background-color: var(--sec-solutions);
+}
+
+.problems {
+  background-color: var(--sec-problems);
+}
+
+.why-us {
+  background-color: var(--sec-why);
+}
+
+.faq {
+  background-color: var(--sec-faq);
+}
+
+.faq .faq-item {
+  background-color: var(--sec-faq-item);
+  border-color: var(--sec-faq-line);
+}
+
+/* Finder + contact are dark navy in both themes, so keep them fixed */
+.finder {
+  background-color: #24344D;
+  color: #FFFFFF;
+}
+
+.finder .section-heading h2,
+.finder .section-heading p {
+  color: #FFFFFF;
+}
+
+.finder-tool {
+  background-color: #132238;
+  color: #FFFFFF;
+}
+
+.finder-tool h3 {
+  color: #FFFFFF;
+}
+
+.finder-option {
+  background-color: #0D1728;
+  color: #FFFFFF;
+  border-color: #607797;
+}
+
+.finder-option:hover,
+.finder-option:focus-visible {
+  background-color: #344B6B;
+  border-color: #F4C95D;
+}
+
+.contact {
+  background-color: #132238;
+  color: #FFFFFF;
+}
+
+.contact .contact-copy h2,
+.contact .contact-copy p,
+.contact .contact-line,
+.contact .contact-address p,
+.contact .contact-address a {
+  color: #FFFFFF;
+}
+
+.contact-form {
+  background-color: #FFFFFF;
+  color: #172033;
+}
+
+.footer {
+  background-color: #0B1220;
+  color: #FFFFFF;
+}
+
+/* ===== FAQ category headings ===== */
+.faq-category {
+  margin-bottom: 48px;
+}
+
+.faq-category:last-child {
+  margin-bottom: 0;
+}
+
+.faq-category-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+/* Headings in the CTA sections: never rely on inheritance */
+.why-us-copy h2,
+.section-heading h2,
+.contact-copy h2 {
+  color: var(--ink);
+}
+
+.contact-copy h2 {
+  color: #FFFFFF;
+}
+
+/* contact is dark navy in both themes */
+.btn-accent {
+  background: var(--copper);
+  color: #fff;
+  border-color: var(--copper);
+}
+
+.btn-accent:hover {
+  filter: brightness(0.92);
+}
+
+.product-hero .btn-secondary {
+  color: #fff;
+  border-color: #fff;
+}
+
+.product-hero .btn-secondary:hover {
+  background: #fff;
+  color: #16305C;
+}
+
+body.dark-theme .btn-primary,
+body.dark-theme .btn-secondary:hover {
+  color: #0A1220;
+}
+
+body.dark-theme .btn-primary:hover {
+  color: #fff;
+}
+
+/* Tighten the gap between "Who we are" and the brands paragraph */
+.about-intro {
+  padding-bottom: 30px;
+}
+
+.about-brands {
+  padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .about-intro {
+    padding-bottom: 10px;
+  }
+
+  .about-brands {
+    padding-top: 10px;
+  }
 }

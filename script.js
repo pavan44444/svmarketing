@@ -725,7 +725,7 @@ function initializeBannerSlider() {
   const dotsWrap = document.getElementById("bannerDots");
   if (!slides.length) return;
 
-//  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  //  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const AUTOPLAY_MS = 4000;
   let current = 0;
   let autoplayTimer = null;
@@ -867,3 +867,86 @@ function initializeWaterCursor() {
   }
   requestAnimationFrame(tick);
 }
+/* =========================================================
+   FLOATING CALL + WHATSAPP BUTTONS
+   Appears automatically on every page
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* Prevent duplicate buttons */
+  if (document.querySelector(".floating-contact")) {
+    return;
+  }
+
+  /* -------------------------
+     CALL US BUTTON
+     ------------------------- */
+
+  const callButton = document.createElement("a");
+
+  callButton.href = "tel:+919902340759";
+  callButton.className = "floating-contact";
+  callButton.setAttribute("aria-label", "Call SV Marketing");
+
+  callButton.innerHTML = `
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+        19.79 19.79 0 0 1-8.63-3.07
+        19.5 19.5 0 0 1-6-6
+        19.79 19.79 0 0 1-3.07-8.67
+        A2 2 0 0 1 4.11 2h3
+        a2 2 0 0 1 2 1.72
+        12.84 12.84 0 0 0 .7 2.81
+        2 2 0 0 1-.45 2.11L8.09 9.91
+        a16 16 0 0 0 6 6l1.27-1.27
+        a2 2 0 0 1 2.11-.45
+        12.84 12.84 0 0 0 2.81.7
+        A2 2 0 0 1 22 16.92z"
+      />
+    </svg>
+
+    <span>Call Us</span>
+  `;
+
+
+  /* -------------------------
+     WHATSAPP BUTTON
+     ------------------------- */
+
+  const whatsappButton = document.createElement("a");
+
+  whatsappButton.href = "https://wa.me/919902340759";
+  whatsappButton.className = "floating-whatsapp";
+  whatsappButton.target = "_blank";
+  whatsappButton.rel = "noopener";
+  whatsappButton.setAttribute("aria-label", "Chat with SV Marketing on WhatsApp");
+
+  whatsappButton.innerHTML = `
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.3-.2.6.2.4.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.8 1.6.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.7-.1 1.4z"
+      />
+    </svg>
+
+    <span>WhatsApp</span>
+  `;
+
+
+  /* Add buttons to page */
+  document.body.appendChild(callButton);
+  document.body.appendChild(whatsappButton);
+
+});
