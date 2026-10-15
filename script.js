@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeJourneyReveal();
   initializeBannerSlider();
   initializeWaterCursor();
+  initializeFooterDropdown();
 });
 
 
@@ -127,11 +128,27 @@ function initializeMobileMenu() {
     menuButton.setAttribute("aria-expanded", String(isOpen));
   });
 
+  const mobileMQ = window.matchMedia("(max-width: 860px)");
+
+  // Products toggle: on mobile, tap opens/closes submenu instead of navigating
+  const dropdown = navbar.querySelector(".nav-dropdown");
+  const dropdownToggle = dropdown && dropdown.querySelector(".dropdown-toggle");
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener("click", function (e) {
+      if (!mobileMQ.matches) return; // desktop: normal link + hover
+      e.preventDefault();
+      const open = dropdown.classList.toggle("open");
+      dropdownToggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+
   navbar.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function () {
+      if (link === dropdownToggle && mobileMQ.matches) return; // keep menu open
       navbar.classList.remove("mobile-open");
       menuButton.classList.remove("active");
       menuButton.setAttribute("aria-expanded", "false");
+      if (dropdown) dropdown.classList.remove("open");
     });
   });
 }
@@ -850,7 +867,7 @@ function initializeWaterCursor() {
     setTimeout(function () { drop.classList.remove("is-clicking"); }, 300);
 
     const ripple = document.createElement("div");
-    
+
     ripple.style.left = mouseX + "px";
     ripple.style.top = mouseY + "px";
     document.body.appendChild(ripple);
@@ -949,3 +966,12 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.appendChild(whatsappButton);
 
 });
+function initializeFooterDropdown() {
+  document.querySelectorAll(".footer-dropdown-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const wrap = btn.closest(".footer-dropdown");
+      const open = wrap.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(open));
+    });
+  });
+}
