@@ -5098,3 +5098,70 @@ body.dark-theme .btn-primary:hover {
     white-space: normal;
   }
 }
+
+/* ===== Footer contact links: spacing on mobile ===== */
+.footer-whatsapp,
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* space between icon and text */
+}
+
+@media (max-width: 768px) {
+
+  .footer-whatsapp,
+  .footer-email {
+    display: flex;
+    /* each link on its own row */
+    width: 100%;
+    padding: 10px 0;
+    /* comfortable tap area */
+    margin: 0;
+    line-height: 1.4;
+    word-break: break-word;
+    /* long email won't overflow */
+  }
+
+  .footer-whatsapp {
+    margin-top: 12px;
+    /* gap above, from the phone number */
+  }
+
+  .footer-email {
+    margin-bottom: 16px;
+    /* gap below, before the divider line */
+  }
+
+  .footer-whatsapp svg,
+  .footer-email svg {
+    flex-shrink: 0;
+    /* icons never get squished */
+  }
+}
+
+/* ===== Footer WhatsApp + Email: stack with spacing on mobile ===== */
+@media (max-width: 860px) {
+
+  .footer .footer-column a.footer-whatsapp,
+  .footer .footer-column a.footer-email {
+    display: flex;
+    /* block-level, so each sits on its own row */
+    width: fit-content;
+    margin: 0;
+    padding: 8px 0;
+    gap: 10px;
+  }
+
+  .footer .footer-column a.footer-whatsapp {
+    margin-top: 14px;
+    /* gap from the phone number above */
+  }
+
+  .footer .footer-column a.footer-email {
+    margin-top: 6px;
+    /* gap between WhatsApp and email */
+    margin-bottom: 20px;
+    /* gap before the divider below */
+  }
+}
