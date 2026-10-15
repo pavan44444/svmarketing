@@ -5165,3 +5165,73 @@ body.dark-theme .btn-primary:hover {
     /* gap before the divider below */
   }
 }
+
+/* ===== Customer Journey: vertical timeline on tablet + mobile ===== */
+@media (max-width: 960px) {
+
+  .journey-track {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Dashed vertical connector (re-enabled, overrides display:none) */
+  .journey-track::before {
+    display: block;
+    top: 28px;
+    bottom: 28px;
+    left: 27px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: repeating-linear-gradient(to bottom,
+        var(--line-strong) 0 8px,
+        transparent 8px 14px);
+  }
+
+  /* Blue flowing highlight, top to bottom */
+  .journey-track.in-view::after {
+    display: block;
+    top: 28px;
+    left: 27px;
+    width: 2px;
+    height: 0;
+    animation: journeyFlowVertical 2.4s ease-out 0.2s forwards;
+  }
+
+  @keyframes journeyFlowVertical {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: calc(100% - 56px);
+    }
+  }
+
+  /* Each step: icon on the left, text on the right */
+  .journey-step {
+    position: relative;
+    text-align: left;
+    padding: 0 0 34px 84px;
+    min-height: 56px;
+  }
+
+  .journey-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .journey-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    z-index: 2;
+    /* keeps the line behind the icon circle */
+  }
+
+  .journey-step h3 {
+    padding-top: 4px;
+  }
+}
