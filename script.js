@@ -810,7 +810,6 @@ function initializeWaterCursor() {
   if (!window.matchMedia || !window.matchMedia("(pointer: fine)").matches) return;
 
   const drop = document.createElement("div");
-  drop.className = "cursor-drop";
   drop.setAttribute("aria-hidden", "true");
   document.body.appendChild(drop);
 
@@ -851,7 +850,7 @@ function initializeWaterCursor() {
     setTimeout(function () { drop.classList.remove("is-clicking"); }, 300);
 
     const ripple = document.createElement("div");
-    ripple.className = "cursor-ripple";
+    
     ripple.style.left = mouseX + "px";
     ripple.style.top = mouseY + "px";
     document.body.appendChild(ripple);
