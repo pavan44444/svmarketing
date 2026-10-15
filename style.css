@@ -5055,3 +5055,46 @@ body.dark-theme .btn-primary:hover {
 .menu-toggle span {
   background: #FFFFFF;
 }
+
+/* ===== Mobile: always show Products dropdown (no hover needed) ===== */
+@media (max-width: 768px) {
+
+  .nav-dropdown {
+    width: 100%;
+    display: block;
+  }
+
+  /* Hide the arrow since nothing needs to be opened */
+  .nav-dropdown .dropdown-arrow {
+    display: none;
+  }
+
+  /* Force the menu to be visible and part of the normal flow */
+  .nav-dropdown .dropdown-menu,
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
+    display: block !important;
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 0 16px;
+    /* indent sub-items */
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid rgba(0, 0, 0, 0.15);
+    /* small guide line */
+  }
+
+  .nav-dropdown .dropdown-menu a {
+    display: block;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    white-space: normal;
+  }
+}
