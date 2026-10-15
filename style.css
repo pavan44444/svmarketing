@@ -5022,3 +5022,36 @@ body.dark-theme .btn-primary:hover {
   /* crops the empty top/bottom, keeps full width */
   object-position: center;
 }
+
+.dropdown-menu {
+  background: #161f36;
+  /* match your header navy */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dropdown-menu a {
+  color: #fff;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ff6b4a;
+  /* your orange accent */
+}
+
+/* Mobile menu panel: match the dark header in both themes */
+@media (max-width: 860px) {
+  .navbar {
+    background: #172033;
+    border-bottom: 1px solid #2F3D55;
+  }
+
+  body.dark-theme .navbar {
+    background: #26344A;
+    border-bottom-color: #40526D;
+  }
+}
+
+.menu-toggle span {
+  background: #FFFFFF;
+}
