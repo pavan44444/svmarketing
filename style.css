@@ -5304,3 +5304,10 @@ body.dark-theme .btn-primary:hover {
 .footer-column .footer-dropdown.open .footer-sub {
   display: block;
 }
+
+/* Center the main subject in all hero banner images on mobile */
+@media (max-width: 768px) {
+  .hero-banner .banner-slide .banner-img {
+    object-position: center center;
+  }
+}
