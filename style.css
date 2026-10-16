@@ -5328,7 +5328,7 @@ body.dark-theme .btn-primary:hover {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 200px) {
   .hero-banner .banner-slide[data-slide="0"] .banner-img {
     object-fit: cover;
     object-position: center 25%;
